@@ -160,11 +160,10 @@ width: 400px;
 }
 
 #price_list {
-width: 49%;
 }
 #sell_list {
-width: 49%;
 }
+
 #locations ul li a {
   background: black !important;
 }
