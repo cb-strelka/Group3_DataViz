@@ -4,20 +4,45 @@
  * requires: jquery 1.5
  */
 
-// malevich
-// kandinsky
+
+/*chagall
+kandinsky
+konchalovsky
+lentulov
+lissitky
+malevich
+petrovvodkin
+philimonov
+popova
+rodchenko
+*/
 
 function Place_Object(name){
     this.name = name;
-    this.price_differences = {apples: 1, oranges : 1};
+    this.price_differences = {chagall: 1, kandinsky : 1,konchalovsky: 1, lentulov : 1,lissitky: 1, malevich : 1,petrovvodkin: 1, philimonov : 1,popova: 1, rodchenko : 1};
     this.get_price_list = function(){
-        apples_price = item_prices.apples * this.price_differences.apples;
-        oranges_price = item_prices.oranges * this.price_differences.oranges;
+        chagall_price = item_prices.chagall * this.price_differences.chagall;
+        kandinsky_price = item_prices.kandinsky * this.price_differences.kandinsky;
+        konchalovsky_price = item_prices.konchalovsky * this.price_differences.konchalovsky;
+        lentulov_price = item_prices.lentulov * this.price_differences.lentulov;
+        lissitky_price = item_prices.lissitky * this.price_differences.lissitky;
+        malevich_price = item_prices.malevich * this.price_differences.malevich;
+        petrovvodkin_price = item_prices.petrovvodkin * this.price_differences.petrovvodkin;
+        philimonov_price = item_prices.philimonov * this.price_differences.philimonov;
+        popova_price = item_prices.popova * this.price_differences.popova;
+        rodchenko_price = item_prices.rodchenko * this.price_differences.rodchenko;
+        chagall_price= Math.floor(chagall_price);
+        kandinsky_price= Math.floor(kandinsky_price);
+        konchalovsky_price= Math.floor(konchalovsky_price);
+        lentulov_price= Math.floor(lentulov_price);
+        lissitky_price= Math.floor(lissitky_price);
+        malevich_price= Math.floor(malevich_price);
+        petrovvodkin_price= Math.floor(petrovvodkin_price);
+        philimonov_price= Math.floor(philimonov_price);
+        popova_price= Math.floor(popova_price);
+        rodchenko_price= Math.floor(rodchenko_price);
 
-        apples_price= Math.floor(apples_price);
-        oranges_price= Math.floor(oranges_price);
-
-        return {apples:apples_price, oranges:oranges_price};
+        return {chagall:chagall_price, kandinsky:kandinsky_price, konchalovsky:konchalovsky_price, lentulov:lentulov_price, lissitky:lissitky_price, malevich:malevich_price, petrovvodkin:petrovvodkin_price, philimonov:philimonov_price, popova:popova_price, rodchenko:rodchenko_price};
     };
 };
 
@@ -26,9 +51,9 @@ function Player_Object()
 {
     this.days_left = 30;
     this.name = "My Painting Collection";
-    this.inventory = {apples : 0, oranges: 0};
-    this.money = 200;
-    this.debt = 200;
+    this.inventory = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+    this.money = 1000000;
+    this.debt = 1000000;
     this.daily_interest = 0.1;
 
     this.advance_day = function(){
@@ -49,22 +74,25 @@ function Player_Object()
 
 var player = new Player_Object();
 
-var item_prices = {apples : 10, oranges : 100};
+var item_prices = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
 
-var moscow = new Place_Object("Moscow");
-moscow.price_differences = {apples: .5, oranges: 2};
-var london = new Place_Object("London");
-london.price_differences = {apples: 2, oranges: .5};
+var moscow_place = new Place_Object("Moscow");
+moscow_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+var london_place = new Place_Object("London");
+london_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+var new_york_place = new Place_Object("New York");
+new_york_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+var st_petersburg_place = new Place_Object("St. Petersburg");
+st_petersburg_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+var miami_place = new Place_Object("Miami");
+miami_place. price_differences = {apples: .365, oranges: 3.6};
+var beijing_place = new Place_Object("Beijing");
+beijing_place. price_differences = {apples: .365, oranges: 3.6};
+var vienna_place = new Place_Object("Vienna");
+vienna_place. price_differences = {apples: .365, oranges: 3.6};
 
-var new_york = new Place_Object("New York");
-new_york.price_differences = {apples: 2, oranges: .5};
-var st_petersburg = new Place_Object("St. Petersburg");
-st_petersburg.price_differences = {apples: 2, oranges: .5};
 
-
-
-var location_map = {"moscow":moscow, "london":london};
-
+var location_map = {"Moscow":moscow_place, "London":london_place, "New York":new_york_place, "St Petersburg":st_petersburg_place, "Miami":miami_place};
 
 
 
