@@ -12,14 +12,14 @@ lentulov
 lissitky
 malevich
 petrovvodkin
-philimonov
+tatlin
 popova
 rodchenko
 */
 
 function Place_Object(name){
     this.name = name;
-    this.price_differences = {chagall: 1, kandinsky : 1,konchalovsky: 1, lentulov : 1,lissitky: 1, malevich : 1,petrovvodkin: 1, philimonov : 1,popova: 1, rodchenko : 1};
+    this.price_differences = {chagall: 1, kandinsky : 1,konchalovsky: 1, lentulov : 1,lissitky: 1, malevich : 1,petrovvodkin: 1, tatlin : 1,popova: 1, rodchenko : 1};
     this.get_price_list = function(){
         chagall_price = item_prices.chagall * this.price_differences.chagall;
         kandinsky_price = item_prices.kandinsky * this.price_differences.kandinsky;
@@ -28,7 +28,7 @@ function Place_Object(name){
         lissitky_price = item_prices.lissitky * this.price_differences.lissitky;
         malevich_price = item_prices.malevich * this.price_differences.malevich;
         petrovvodkin_price = item_prices.petrovvodkin * this.price_differences.petrovvodkin;
-        philimonov_price = item_prices.philimonov * this.price_differences.philimonov;
+        tatlin_price = item_prices.tatlin * this.price_differences.tatlin;
         popova_price = item_prices.popova * this.price_differences.popova;
         rodchenko_price = item_prices.rodchenko * this.price_differences.rodchenko;
         chagall_price= Math.floor(chagall_price);
@@ -38,11 +38,11 @@ function Place_Object(name){
         lissitky_price= Math.floor(lissitky_price);
         malevich_price= Math.floor(malevich_price);
         petrovvodkin_price= Math.floor(petrovvodkin_price);
-        philimonov_price= Math.floor(philimonov_price);
+        tatlin_price= Math.floor(tatlin_price);
         popova_price= Math.floor(popova_price);
         rodchenko_price= Math.floor(rodchenko_price);
 
-        return {chagall:chagall_price, kandinsky:kandinsky_price, konchalovsky:konchalovsky_price, lentulov:lentulov_price, lissitky:lissitky_price, malevich:malevich_price, petrovvodkin:petrovvodkin_price, philimonov:philimonov_price, popova:popova_price, rodchenko:rodchenko_price};
+        return {chagall:chagall_price, kandinsky:kandinsky_price, konchalovsky:konchalovsky_price, lentulov:lentulov_price, lissitky:lissitky_price, malevich:malevich_price, petrovvodkin:petrovvodkin_price, tatlin:tatlin_price, popova:popova_price, rodchenko:rodchenko_price};
     };
 };
 
@@ -51,7 +51,7 @@ function Player_Object()
 {
     this.days_left = 30;
     this.name = "My Painting Collection";
-    this.inventory = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+    this.inventory = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
     this.money = 1000000;
     this.debt = 1000000;
     this.daily_interest = 0.1;
@@ -74,31 +74,31 @@ function Player_Object()
 
 var player = new Player_Object();
 
-var item_prices = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+var item_prices = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
 
 
 
 
 var moscow_place = new Place_Object("Moscow");
-moscow_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+moscow_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
 
 var london_place = new Place_Object("London");
-london_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+london_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
 
 var new_york_place = new Place_Object("New York");
-new_york_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+new_york_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
 
 var st_petersburg_place = new Place_Object("St. Petersburg");
-st_petersburg_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+st_petersburg_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
 
 var miami_place = new Place_Object("Miami");
-miami_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+miami_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
 
 var beijing_place = new Place_Object("Beijing");
-beijing_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+beijing_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
 
 var vienna_place = new Place_Object("Vienna");
-vienna_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+vienna_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
 
 var placeList = [moscow_place,london_place, new_york_place, st_petersburg_place, miami_place, beijing_place,vienna_place ];
 
@@ -112,7 +112,7 @@ for (i = 0; i < placeList.length; i++) {
 			lissitky : Math.random() * 1000000,
 			 malevich: Math.random() * 1000000,
 			 petrovvodkin : Math.random() * 1000000,
-			 philimonov: Math.random() * 1000000,
+			 tatlin: Math.random() * 1000000,
 			 popova : Math.random() * 1000000,
 			 rodchenko: Math.random() * 100000
 
@@ -147,10 +147,18 @@ function move_to(place){
     place = location_map[place];
     price_list = place.get_price_list();
     player.price_list = price_list;
-
     $("#current_location").text(place.name);
-    $("#apples .price").text(price_list.apples);
-    $("#oranges .price").text(price_list.oranges);
+    $("#chagall .price").text(price_list.chagall);
+    $("#kandinsky .price").text(price_list.kandinsky);
+    $("#konchalovsky .price").text(price_list.konchalovsky);
+    $("#lentulov .price").text(price_list.lentulov);
+    $("#lissitky .price").text(price_list.lissitky);
+    $("#malevich .price").text(price_list.malevich);
+    $("#petrovvodkin .price").text(price_list.petrovvodkin);
+    $("#tatlin .price").text(price_list.tatlin);
+    $("#popova .price").text(price_list.popova);
+    $("#rodchenko .price").text(price_list.rodchenko);
+
 }
 
 function buy_button(item){
