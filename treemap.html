@@ -45,13 +45,14 @@
 	*/
 
 
-
 	body {
 		background: white;
+		margin:0;
+		padding:0;
 	}
 
 		.node {
-  border: solid 1px blue;
+  border: solid 0px blue;
   font: 10px sans-serif;
   line-height: 12px;
   overflow: hidden;
@@ -61,12 +62,11 @@
 
 	.node {
 /* 		background-size:300%; */
-		background-size: auto;
-		background-position:0% 0%;
-		border:1px solid !important;
+		background-size: 700px;
+		background-position:50% 50%;
+		border:0px solid !important;
+
 	}
-
-
 
 	.painting-1 {
 		background-image:url("paintings/chagall_01.jpg");
@@ -107,11 +107,11 @@
 	}
 
 	.painting-9 {
-		background-image:url("paintings/lissitky_01.jpg");
+		background-image:url("paintings/lissitsky_01.jpg");
 	}
 
 	.painting-10 {
-		background-image:url("paintings/lissitky_02.jpg");
+		background-image:url("paintings/lissitsky_02.jpg");
 	}
 
 	.painting-11 {
@@ -139,19 +139,19 @@
 	}
 
 	.painting-17 {
-		background-image:url("paintings/philimonov_01.jpg");
-	}
-
-	.painting-18 {
-		background-image:url("paintings/philimonov_02.jpg");
-	}
-
-	.painting-19 {
 		background-image:url("paintings/rodchenko_01.jpg");
 	}
 
-	.painting-20 {
+	.painting-18 {
 		background-image:url("paintings/rodchenko_02.jpg");
+	}
+
+	.painting-19 {
+		background-image:url("paintings/tatlin_01.jpg");
+	}
+
+	.painting-20 {
+		background-image:url("paintings/tatlin_02.jpg");
 	}
 
 
@@ -219,8 +219,8 @@
 		console.log(data1);
 
 		var margin = {top: 0, right: 0, bottom: 0, left: 0},
-			width = 760 - margin.left - margin.right,
-			height = 500 - margin.top - margin.bottom;
+			width = 1200 - margin.left - margin.right,
+			height = 800 - margin.top - margin.bottom;
 
 		var treemap = d3.layout.treemap()
 			.size([width, height])
