@@ -50,11 +50,13 @@ function Place_Object(name){
 };
 
 
+var starting_inventory = {chagall : 10, kandinsky: 5,konchalovsky : 2, lentulov: 1,lissitky : 0, malevich: 4,petrovvodkin : 0, tatlin:0,popova : 0, rodchenko: 0};
+
 function Player_Object()
 {
     this.days_left = 30;
     this.name = "My Painting Collection";
-    this.inventory = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
+    this.inventory = starting_inventory;
     this.money = 100000000;
     this.debt = 1000000;
     this.daily_interest = 0.1;
@@ -226,7 +228,12 @@ function submit_loan_shark_request(){
     $("#loan_shark_deposit").attr("value",0);
     $("#loan_shark_withdraw").attr("value",0);
 
+
+
+
     refresh_view();
+
+
 
 
 }
@@ -283,6 +290,7 @@ $(document).ready(function(){
     $("#price_list li a").each(function(i){
         $(this).click(function(eventObject){
             buy_button($(this).attr("id"));
+
         });
     });
 
@@ -293,12 +301,179 @@ $(document).ready(function(){
         });
     });
 
+	 // move_to(moscow_place);
 
     /* first refresh */
+
     refresh_view();
+
+		function buildTreemap(){
+
+			var data1 = {
+				"name": "items",
+				"children": [
+
+				]
+			};
+
+		/*
+
+		{
+						"id": "33447",
+						"value": "13",
+						"color": "#ff8080",
+						"keytable": "CCR",
+						"class_name":"malevich-01"
+					},
+					{
+						"id": "33455",
+						"value": "90",
+						"color": "#80ff80",
+						"keytable": "COMMODITY",
+						"class_name":"kandinsky-01"
+					},
+					{
+						"id": "212",
+						"value": "90",
+						"color": "#80ff80",
+						"keytable": "COMMODITY",
+						"class_name":"kandinsky-02"
+					}
+
+
+		*/
+
+		console.log( player.inventory);
+
+		var inventoryArray = [];
+
+/*
+		for (var value in  player.inventory) {
+		    if ( player.inventory.hasOwnProperty(value)) {
+		      console.log(value);
+		    }
+	}
+*/
+
+		for (var key in  player.inventory) {
+    if ( player.inventory.hasOwnProperty(key)) {
+        inventoryArray.push(player.inventory[key]);
+        inventoryArray.push(player.inventory[key]);
+    }
+}
+
+		for (i = 0; i < 20; i++) {
+
+			var newCounter = parseInt(Math.floor(i / 2));
+			var newValue = 20;
+			var newObj =
+			{
+						"id": i*55,
+						"value": inventoryArray[i],
+						"color": "#222",
+						"keytable": "CCR",
+						"class_name":"painting-"+(i+1),
+			}
+
+
+			data1["children"][i] = newObj;
+
+		}
+
+		console.log(data1);
+
+		var margin = {top: 0, right: 0, bottom: 0, left: 0},
+			width = 1200 - margin.left - margin.right,
+			height = 800 - margin.top - margin.bottom;
+
+		var treemap = d3.layout.treemap()
+			.size([width, height])
+			//.sticky(false)
+			.sort(function(a,b) { return a.value - b.value; })
+			.round(true)
+			.value(function(d) { return d.value });
+
+
+		var div = d3.select("#treemap").append("div")
+			.style("position", "relative")
+			.style("width", (width + margin.left + margin.right) + "px")
+			.style("height", (height + margin.top + margin.bottom) + "px")
+			.style("left", margin.left + "px")
+			.style("top", margin.top + "px")
+			.attr("id", "first")
+			;
+
+
+
+		var node = div.datum(data1).selectAll(".node")
+			.data(treemap.nodes)
+			.enter().append("div")
+			.attr("class", function(d) { return "node " +  d.class_name; })
+			.call(position)
+			//.style("background", function(d) { return d.color ? d.color : "#ffffff"; })
+// 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
+			;
+
+		d3.selectAll("#newValue").on("click", function() {
+            var node = div.datum(data2).selectAll(".node")
+			    .data(treemap.nodes);
+            node.enter().append("div")
+			.attr("class", "node")
+			.style("background-size",Math.random()*2000 + "px");
+            node.transition().duration(5000).call(position)
+			//.style("background", function(d) { return d.color ? d.color : "#ffffff"; })
+// 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
+			;
+		});
+
+/*
+		setInterval( function(){
+				for (i = 0; i < 20; i++) {
+
+
+				data1["children"][i].value = Math.random() * i * i;
+
+			}
+			 var node = div.datum(data1).selectAll(".node")
+			    .data(treemap.nodes);
+
+			node.transition().duration(300).call(position)
+			//.style("background-size",Math.random()*5000 + "px")
+// 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
+			;
+		},2000);
+*/
+
+		function UpdateValues() {
+
+
+		}
+
+
+		function UpdateTreeMap() {
+
+		}
+
+	};
+
+	buildTreemap();
+
+	setTimeout(function(){
+
+			$("#work").trigger("click");
+				$("#moscow_place").trigger("click");
+
+		}, 200);
+
 
 });
 
+function position() {
+    this.style("left", function(d) { return d.x + "px"; })
+        .style("top", function(d) { return d.y + "px"; })
+        .style("width", function(d) { return Math.max(0, d.dx) + "px"; })
+        .style("height", function(d) { return Math.max(0, d.dy) + "px"; });
+}
 
 Number.prototype.formatMoney = function(c, d, t){
 var n = this,
