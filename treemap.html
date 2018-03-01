@@ -47,11 +47,11 @@
 
 
 	body {
-		background: #222;
+		background: white;
 	}
 
 		.node {
-  border: solid 1px white;
+  border: solid 1px blue;
   font: 10px sans-serif;
   line-height: 12px;
   overflow: hidden;
@@ -60,92 +60,97 @@
 }
 
 	.node {
-		background-size:1200px;
+/* 		background-size:300%; */
+		background-size: auto;
 		background-position:0% 0%;
-		border:0px solid !important;
+		border:1px solid !important;
 	}
 
 
 
-	.chagall-01 {
+	.painting-1 {
 		background-image:url("paintings/chagall_01.jpg");
 
 	}
 
-	.chagall-02 {
+	.painting-2 {
 		background-image:url("paintings/chagall_02.jpg");
 
 	}
 
 
-		.kandinsky-01 {
+	.painting-3 {
 		background-image:url("paintings/kandinsky_01.jpg");
 
 	}
 
-		.kandinsky-01 {
-		background-image:url("paintings/kandinsky_01.jpg");
+	.painting-4 {
+		background-image:url("paintings/kandinsky_02.jpg");
 
 	}
 
-		.konchalovsky-01 {
+	.painting-5 {
 		background-image:url("paintings/konchalovsky_01.jpg");
 	}
 
-	.konchalovsky-02 {
+	.painting-6 {
 		background-image:url("paintings/konchalovsky_02.jpg");
 	}
 
 
-	.lentulov-01 {
+	.painting-7 {
 		background-image:url("paintings/lentulov_01.jpg");
 	}
 
-	.lentulov-02 {
+	.painting-8 {
 		background-image:url("paintings/lentulov_02.jpg");
 	}
 
-		.lissitky-01 {
+	.painting-9 {
 		background-image:url("paintings/lissitky_01.jpg");
 	}
 
-	.lissitky-02 {
+	.painting-10 {
 		background-image:url("paintings/lissitky_02.jpg");
 	}
 
-
-
-
-
-	.malevich-01 {
+	.painting-11 {
 		background-image:url("paintings/malevich_01.jpg");
 	}
 
-	.malevich-02 {
+	.painting-12 {
 		background-image:url("paintings/malevich_02.jpg");
 	}
 
-	.petrovvodkin-01 {
+	.painting-13 {
 		background-image:url("paintings/petrovvodkin_01.jpg");
 	}
 
-	.petrovvodkin-02 {
+	.painting-14 {
 		background-image:url("paintings/petrovvodkin_02.jpg");
 	}
 
-	.philimonov-01 {
+	.painting-15 {
+		background-image:url("paintings/popova_01.jpg");
+	}
+
+	.painting-16 {
+		background-image:url("paintings/popova_02.jpg");
+	}
+
+	.painting-17 {
 		background-image:url("paintings/philimonov_01.jpg");
 	}
 
-	.philimonov-02 {
+	.painting-18 {
 		background-image:url("paintings/philimonov_02.jpg");
 	}
 
-		.rodchenko-01 {
+	.painting-19 {
 		background-image:url("paintings/rodchenko_01.jpg");
 	}
 
-	.rodchenko-02 {
+	.painting-20 {
 		background-image:url("paintings/rodchenko_02.jpg");
 	}
 
@@ -201,10 +206,10 @@
 			var newObj =
 			{
 						"id": i*55,
-						"value": 0,
+						"value": Math.random()*i*i,
 						"color": "#222",
 						"keytable": "CCR",
-						"class_name":"malevich-01"
+						"class_name":"painting-"+(i+1),
 			}
 
 			data1["children"][i] = newObj;
@@ -213,7 +218,7 @@
 
 		console.log(data1);
 
-		var margin = {top: 40, right: 10, bottom: 10, left: 10},
+		var margin = {top: 0, right: 0, bottom: 0, left: 0},
 			width = 760 - margin.left - margin.right,
 			height = 500 - margin.top - margin.bottom;
 
@@ -222,7 +227,7 @@
 			//.sticky(false)
 			.sort(function(a,b) { return a.value - b.value; })
 			.round(true)
-			.value(function(d) { return Math.log(d.value); });
+			.value(function(d) { return d.value });
 
 
 		var div = d3.select("#treemap").append("div")
@@ -242,7 +247,7 @@
 			.attr("class", function(d) { return "node " +  d.class_name; })
 			.call(position)
 			//.style("background", function(d) { return d.color ? d.color : "#ffffff"; })
-			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
+// 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
 			;
 
 		d3.selectAll("#newValue").on("click", function() {
@@ -253,11 +258,11 @@
 
             node.transition().duration(5000).call(position)
 			//.style("background", function(d) { return d.color ? d.color : "#ffffff"; })
-			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
+// 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
 			;
 		});
 
-		setTimeout( function(){
+		setInterval( function(){
 
 //			 console.log(data1)
 
@@ -265,7 +270,17 @@
 
 			// console.log( data1["children"][0]);
 
-			  data1["children"][0].value = 20;
+
+				for (i = 0; i < 20; i++) {
+
+
+				data1["children"][i].value = Math.random() * i * i;
+
+			}
+
+
+
+
 
 			  console.log( data1["children"][0].value);
 
@@ -273,8 +288,8 @@
 			 var node = div.datum(data1).selectAll(".node")
 			    .data(treemap.nodes);
 
-            node.transition().duration(2000).call(position)
-			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
+			node.transition().duration(300).call(position)
+// 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
 			;
 
 
@@ -305,8 +320,8 @@
 function position() {
     this.style("left", function(d) { return d.x + "px"; })
         .style("top", function(d) { return d.y + "px"; })
-        .style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })
-        .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; });
+        .style("width", function(d) { return Math.max(0, d.dx) + "px"; })
+        .style("height", function(d) { return Math.max(0, d.dy) + "px"; });
 }
 	</script>
 
