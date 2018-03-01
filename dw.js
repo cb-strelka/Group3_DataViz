@@ -151,18 +151,9 @@ function refresh_view(){
 function move_to(place){
 
 
-	console.log(place);
-    player.advance_day();
-
-
-
+	player.advance_day();
     place = location_map[place];
-
- console.log(place);
-
     price_list = place.get_price_list();
-
-
 
     player.price_list = price_list;
     $("#current_location").text(place.name);
