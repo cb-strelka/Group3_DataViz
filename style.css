@@ -1,6 +1,6 @@
 body
 {
-    background: #666;
+    background: #fff;
     font-family:sans-serif;
 }
 h1,h2,h3
@@ -17,6 +17,7 @@ h2
 #game
 {
     margin: 0.5%;
+    margin-top: 30px;
 
 }
 
@@ -55,15 +56,15 @@ nav .active
 #content
 {
 
-    background: #eef;
+    background: #fff;
     display:inline-block;
     vertical-align: top;
     width:79%;
     padding: 5px;
-    
+
 }
 
-#status 
+#status
 {
     text-align:right;
 }
@@ -75,7 +76,7 @@ nav .active
 
 #viewport
 {
-    background: #888;
+    background: #fff;
 }
 
 #viewport .page
@@ -115,6 +116,7 @@ nav .active
 #viewport .current_page
 {
     display:block;
+    margin-top: 50px;
 }
 
 #the_score
@@ -130,7 +132,12 @@ nav .active
     margin:2em;
     padding:1em;
 }
-
+#sell_list ul li a {
+  background:red !important;
+}
+#locations ul li a {
+  background: black !important;
+}
 .money_end
 {
     color:green;
