@@ -1,6 +1,6 @@
 body
 {
-    background: #fff;
+    background: #000;
     font-family:sans-serif;
 }
 h1,h2,h3
@@ -20,17 +20,31 @@ h2
     margin-top: 30px;
 
 }
+#float_game{
+float: right;
+z-index: 2;
+background: transparent;
+margin-right: 4%;
+margin-top: 4%;
+}
 
 nav
 {
-
-    display:inline-block;
-    width:10%;
-}
+  display:inline-block;
+  margin-top: 1%;
+  position: absolute;
+  z-index: 400;
+  right: 450px;
+  }
 nav ul
 {
     padding:0;
     text-align:right;
+    margin-top: 2px;
+}
+nav ul li {
+  margin-top: 1px;
+  list-style: none;
 }
 
 nav a
@@ -38,9 +52,11 @@ nav a
     display:block;
     text-decoration: none;
     color: black;
-    list-style-type:none;
     padding: 5px;
     padding-right: 10px;
+    margin-top: 5px;
+    background-color: #fff;
+
 }
 
 nav a:focus
@@ -56,12 +72,11 @@ nav .active
 #content
 {
 
-    background: #fff;
+    background: #ffffff8c;
     display:inline-block;
     vertical-align: top;
-    width:79%;
     padding: 5px;
-
+width: 400px;
 }
 
 #status
@@ -76,7 +91,6 @@ nav .active
 
 #viewport
 {
-    background: #fff;
 }
 
 #viewport .page
@@ -134,6 +148,22 @@ nav .active
 }
 #sell_list ul li a {
   background:red !important;
+
+}
+#sell_list ul {
+  display: table-caption;
+
+}
+#price_list ul {
+  display: table-caption;
+
+}
+
+#price_list {
+width: 49%;
+}
+#sell_list {
+width: 49%;
 }
 #locations ul li a {
   background: black !important;
