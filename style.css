@@ -34,7 +34,7 @@ nav
   margin-top: 1%;
   position: absolute;
   z-index: 400;
-  right: 450px;
+  right: 465px;
   }
 nav ul
 {
@@ -120,6 +120,8 @@ width: 400px;
     padding:1em;
     background:blue;
     display:inline-block;
+    padding: 2px;
+
 }
 
 #viewport #inventory
@@ -181,6 +183,11 @@ float:left;
 }
 #locations ul li a {
   background: black !important;
+}
+#locations ul li  {
+  background: black !important;
+  text-align: center;
+  padding: 5px;
 }
 .money_end
 {
