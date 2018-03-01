@@ -20,7 +20,9 @@ rodchenko
 function Place_Object(name){
     this.name = name;
     this.price_differences = {chagall: 1, kandinsky : 1,konchalovsky: 1, lentulov : 1,lissitky: 1, malevich : 1,petrovvodkin: 1, tatlin : 1,popova: 1, rodchenko : 1};
+
     this.get_price_list = function(){
+
         chagall_price = item_prices.chagall * this.price_differences.chagall;
         kandinsky_price = item_prices.kandinsky * this.price_differences.kandinsky;
         konchalovsky_price = item_prices.konchalovsky * this.price_differences.konchalovsky;
@@ -31,6 +33,7 @@ function Place_Object(name){
         tatlin_price = item_prices.tatlin * this.price_differences.tatlin;
         popova_price = item_prices.popova * this.price_differences.popova;
         rodchenko_price = item_prices.rodchenko * this.price_differences.rodchenko;
+
         chagall_price= Math.floor(chagall_price);
         kandinsky_price= Math.floor(kandinsky_price);
         konchalovsky_price= Math.floor(konchalovsky_price);
@@ -119,11 +122,14 @@ for (i = 0; i < placeList.length; i++) {
 		}
 
 		placeList[i].price_differences = newObj;
+
+
+		console.log(placeList[i].get_price_list());
 }
 
 console.log(placeList);
 
-var location_map = {"Moscow":moscow_place, "London":london_place, "New York":new_york_place, "St Petersburg":st_petersburg_place, "Miami":miami_place};
+var location_map = {"Moscow":moscow_place, "London":london_place, "New York":new_york_place, "St Petersburg":st_petersburg_place, "Miami":miami_place,"Vienna":vienna_place, "Beijing":beijing_place };
 
 
 
@@ -148,16 +154,16 @@ function move_to(place){
     price_list = place.get_price_list();
     player.price_list = price_list;
     $("#current_location").text(place.name);
-    $("#chagall .price").text(price_list.chagall_price);
-    $("#kandinsky .price").text(price_list.kandinsky_price);
-    $("#konchalovsky .price").text(price_list.konchalovsky_price);
-    $("#lentulov .price").text(price_list.lentulov_price);
-    $("#lissitky .price").text(price_list.lissitky_price);
-    $("#malevich .price").text(price_list.malevich_price);
-    $("#petrovvodkin .price").text(price_list.petrovvodkin_price);
-    $("#tatlin .price").text(price_list.tatlin_price);
-    $("#popova .price").text(price_list.popova_price);
-    $("#rodchenko .price").text(price_list.rodchenko_price);
+    $("#chagall .price").text(price_list.chagall);
+    $("#kandinsky .price").text(price_list.kandinsky);
+    $("#konchalovsky .price").text(price_list.konchalovsky);
+    $("#lentulov .price").text(price_list.lentulov);
+    $("#lissitky .price").text(price_list.lissitky);
+    $("#malevich .price").text(price_list.malevich);
+    $("#petrovvodkin .price").text(price_list.petrovvodkin);
+    $("#tatlin .price").text(price_list.tatlin);
+    $("#popova .price").text(price_list.popova);
+    $("#rodchenko .price").text(price_list.rodchenko);
 
 }
 

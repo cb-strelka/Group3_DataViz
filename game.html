@@ -1,0 +1,568 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>Art Miles</title>
+    <link rel="stylesheet" href="reset.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8">
+
+
+	<script
+  src="https://code.jquery.com/jquery-1.9.1.min.js"
+  integrity="sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ="
+  crossorigin="anonymous"></script>
+
+  <script type="text/javascript" charset="utf-8" src="dw.js"> </script>
+
+  <script src=" https://d3js.org/d3.v3.min.js"></script>
+
+
+	<style>
+
+
+	/*
+
+	Chagall
+	Kandisky
+	Konchalovsky
+	Lentulov
+	Lissitky
+	Malevich
+	Petrov Vodkin
+	Popova
+	Philimonov
+	Rodchenko
+
+
+
+	chagall
+	kandisky
+	konchalovsky
+	lentulov
+	lissitky
+	malevich
+	petrovvodkin
+	popova
+	philimonov
+	rodchenko
+
+	*/
+
+
+	body {
+		background: white;
+		margin:0;
+		padding:0;
+	}
+
+		.node {
+  border: solid 0px blue;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
+
+	.node {
+/* 		background-size:300%; */
+		background-size: 700px;
+		background-position:50% 50%;
+		border:0px solid !important;
+
+	}
+
+	.painting-1 {
+		background-image:url("paintings/chagall_01.jpg");
+
+	}
+
+	.painting-2 {
+		background-image:url("paintings/chagall_02.jpg");
+
+	}
+
+
+	.painting-3 {
+		background-image:url("paintings/kandinsky_01.jpg");
+
+	}
+
+	.painting-4 {
+		background-image:url("paintings/kandinsky_02.jpg");
+
+	}
+
+	.painting-5 {
+		background-image:url("paintings/konchalovsky_01.jpg");
+	}
+
+	.painting-6 {
+		background-image:url("paintings/konchalovsky_02.jpg");
+	}
+
+
+	.painting-7 {
+		background-image:url("paintings/lentulov_01.jpg");
+	}
+
+	.painting-8 {
+		background-image:url("paintings/lentulov_02.jpg");
+	}
+
+	.painting-9 {
+		background-image:url("paintings/lissitsky_01.jpg");
+	}
+
+	.painting-10 {
+		background-image:url("paintings/lissitsky_02.jpg");
+	}
+
+	.painting-11 {
+		background-image:url("paintings/malevich_01.jpg");
+	}
+
+	.painting-12 {
+		background-image:url("paintings/malevich_02.jpg");
+	}
+
+	.painting-13 {
+		background-image:url("paintings/petrovvodkin_01.jpg");
+	}
+
+	.painting-14 {
+		background-image:url("paintings/petrovvodkin_02.jpg");
+	}
+
+	.painting-15 {
+		background-image:url("paintings/popova_01.jpg");
+	}
+
+	.painting-16 {
+		background-image:url("paintings/popova_02.jpg");
+	}
+
+	.painting-17 {
+		background-image:url("paintings/rodchenko_01.jpg");
+	}
+
+	.painting-18 {
+		background-image:url("paintings/rodchenko_02.jpg");
+	}
+
+	.painting-19 {
+		background-image:url("paintings/tatlin_01.jpg");
+	}
+
+	.painting-20 {
+		background-image:url("paintings/tatlin_02.jpg");
+	}
+
+
+
+
+
+
+	</style>
+
+	<script>
+
+	/* Conrad Dean
+ *
+ * Drug Wars remake
+ * requires: jquery 1.5
+ */
+
+// malevich
+// kandinsky
+
+function Place_Object(name){
+    this.name = name;
+    this.price_differences = {apples: 1, oranges : 1};
+    this.get_price_list = function(){
+        apples_price = item_prices.apples * this.price_differences.apples;
+        oranges_price = item_prices.oranges * this.price_differences.oranges;
+
+        apples_price= Math.floor(apples_price);
+        oranges_price= Math.floor(oranges_price);
+
+        return {apples:apples_price, oranges:oranges_price};
+    };
+};
+
+
+function Player_Object()
+{
+    this.days_left = 30;
+    this.name = "My Painting Collection";
+    this.inventory = {apples : 0, oranges: 0};
+    this.money = 200;
+    this.debt = 200;
+    this.daily_interest = 0.1;
+
+    this.advance_day = function(){
+        if(this.days_left > 0){
+            this.days_left = this.days_left - 1;
+            this.debt = this.debt*(1+this.daily_interest);
+            /* round debt */
+            this.debt = Math.floor(this.debt);
+        }
+        else{
+            game_end();
+        }
+    };
+}
+
+
+/* Game Data */
+
+var player = new Player_Object();
+
+var item_prices = {apples : 10, oranges : 100};
+
+var moscow = new Place_Object("Moscow");
+moscow.price_differences = {apples: .5, oranges: 2};
+var london = new Place_Object("London");
+london.price_differences = {apples: 2, oranges: .5};
+
+var new_york = new Place_Object("New York");
+new_york.price_differences = {apples: 2, oranges: .5};
+var st_petersburg = new Place_Object("St. Petersburg");
+st_petersburg.price_differences = {apples: 2, oranges: .5};
+
+
+
+var location_map = {"moscow":moscow, "london":london};
+
+
+
+
+function refresh_view(){
+    /* status bar */
+    $("#player_name").text(player.name);
+    $("#money").text(player.money);
+    $("#days_left").text(player.days_left);
+
+    $("#debt").text(player.debt);
+
+    /* inventory box */
+    $("#inventory span").each(function(){
+        $(this).text(player.inventory[$(this).attr("class")]);
+    });
+
+}
+
+function move_to(place){
+    player.advance_day();
+    place = location_map[place];
+    price_list = place.get_price_list();
+    player.price_list = price_list;
+
+    $("#current_location").text(place.name);
+    $("#apples .price").text(price_list.apples);
+    $("#oranges .price").text(price_list.oranges);
+}
+
+function buy_button(item){
+    if (item in player.price_list){ //this will just straight up crash, meh.
+        price = player.price_list[item];
+        max_items = Math.floor(player.money / price);
+        player.money = player.money - (max_items*price);  // pay moneys
+        player.inventory[item] = player.inventory[item] + max_items;  // get items
+        refresh_view();
+
+    }
+    else{
+        alert("GO SOMEWHERE FIRST DUH");
+    }
+}
+
+function sell_button(item){
+    //sell whole inventory
+    if (item in player.price_list){ //this will just straight up crash, meh.
+        price = player.price_list[item];
+        items = player.inventory[item];
+        profit = items*price;
+        player.inventory[item] = 0;
+        player.money = player.money + profit;
+        refresh_view();
+    }
+    else{
+        alert("GO SOMEWHERE FIRST DUH");
+    }
+}
+
+function submit_loan_shark_request(){
+    deposit = parseInt($("#loan_shark_deposit").attr("value"));
+    withdraw = parseInt($("#loan_shark_withdraw").attr("value"));
+
+    if (deposit >= 0){
+        player.money = player.money - deposit;
+        player.debt = player.debt - deposit;
+    }
+    else{
+        alert(deposit+" is not a number you can deposit with.");
+    }
+
+    if (withdraw >= 0){
+        player.money = player.money + withdraw;
+        player.debt = player.debt + withdraw;
+    }
+    else{
+        alert(withdraw+" is not a number you can withdraw with.");
+    }
+
+    player.money = player.money < 0 ? 0 : player.money;
+    player.debt = player.debt < 0 ? 0 : player.debt;
+
+    $("#loan_shark_deposit").attr("value",0);
+    $("#loan_shark_withdraw").attr("value",0);
+
+    refresh_view();
+
+
+}
+
+function render_new_page(caller_id){
+    /* Turn off the old selected item to turn on the new one*/
+    $(".active").removeClass("active");
+    $("#"+caller_id).addClass("active");
+
+    /* Un-render the current page and render the new one from the
+     * caller_id
+     */
+    $(".current_page").removeClass("current_page");
+    $("#"+caller_id+"_page").addClass("current_page");
+}
+
+function game_end(){
+    /* calculate score and display end page */
+
+    /* add score info to page */
+    $(".money_end").text(player.money);
+    $(".debt_end").text(player.debt);
+    score = player.money-3*player.debt;
+    $(".score_end").text(score);
+    /* conditional coloring of score */
+    score_color = (score > 0)? "green" : "red";
+    $(".score_end").css("color",score_color);
+
+    /* show game end */
+    $("#game").css("display","none");
+    $("#game_end").css("display","block");
+}
+
+
+
+	 	$( document ).ready(function() {
+	function buildTreemap(){
+
+			var data1 = {
+				"name": "items",
+				"children": [
+
+				]
+			};
+
+		/*
+
+		{
+						"id": "33447",
+						"value": "13",
+						"color": "#ff8080",
+						"keytable": "CCR",
+						"class_name":"malevich-01"
+					},
+					{
+						"id": "33455",
+						"value": "90",
+						"color": "#80ff80",
+						"keytable": "COMMODITY",
+						"class_name":"kandinsky-01"
+					},
+					{
+						"id": "212",
+						"value": "90",
+						"color": "#80ff80",
+						"keytable": "COMMODITY",
+						"class_name":"kandinsky-02"
+					}
+
+
+		*/
+
+		for (i = 0; i < 20; i++) {
+
+
+			var newObj =
+			{
+						"id": i*55,
+						"value": Math.random()*i*i,
+						"color": "#222",
+						"keytable": "CCR",
+						"class_name":"painting-"+(i+1),
+			}
+
+			data1["children"][i] = newObj;
+
+		}
+
+		console.log(data1);
+
+		var margin = {top: 0, right: 0, bottom: 0, left: 0},
+			width = 1200 - margin.left - margin.right,
+			height = 800 - margin.top - margin.bottom;
+
+		var treemap = d3.layout.treemap()
+			.size([width, height])
+			//.sticky(false)
+			.sort(function(a,b) { return a.value - b.value; })
+			.round(true)
+			.value(function(d) { return d.value });
+
+
+		var div = d3.select("#treemap").append("div")
+			.style("position", "relative")
+			.style("width", (width + margin.left + margin.right) + "px")
+			.style("height", (height + margin.top + margin.bottom) + "px")
+			.style("left", margin.left + "px")
+			.style("top", margin.top + "px")
+			.attr("id", "first")
+			;
+
+
+
+		var node = div.datum(data1).selectAll(".node")
+			.data(treemap.nodes)
+			.enter().append("div")
+			.attr("class", function(d) { return "node " +  d.class_name; })
+			.call(position)
+			//.style("background", function(d) { return d.color ? d.color : "#ffffff"; })
+// 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
+			;
+
+		d3.selectAll("#newValue").on("click", function() {
+            var node = div.datum(data2).selectAll(".node")
+			    .data(treemap.nodes);
+            node.enter().append("div")
+			.attr("class", "node");
+
+            node.transition().duration(5000).call(position)
+			//.style("background", function(d) { return d.color ? d.color : "#ffffff"; })
+// 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
+			;
+		});
+
+		setInterval( function(){
+
+//			 console.log(data1)
+
+//			 data1["children"][0]["area"] == 30;
+
+			// console.log( data1["children"][0]);
+
+
+				for (i = 0; i < 20; i++) {
+
+
+				data1["children"][i].value = Math.random() * i * i;
+
+			}
+
+
+
+
+
+			  console.log( data1["children"][0].value);
+
+
+			 var node = div.datum(data1).selectAll(".node")
+			    .data(treemap.nodes);
+
+			node.transition().duration(300).call(position)
+// 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
+			;
+
+
+		}
+		,
+
+		2000);
+
+		function UpdateValues() {
+
+
+		}
+
+
+		function UpdateTreeMap() {
+
+		}
+
+
+
+
+	};
+
+
+	    $("nav a").each(function(i){
+        $(this).click(function(eventObject){
+            render_new_page($(this).attr("id"));
+        });
+        $(this).css("cursor","pointer");
+    });
+
+    /* adding location movement links */
+    $("#locations li a").each(function(i){
+        $(this).click(function(eventObject){
+            move_to($(this).attr("id"));
+        });
+    });
+
+    /* adding buy buttons */
+    $("#price_list li a").each(function(i){
+        $(this).click(function(eventObject){
+            buy_button($(this).attr("id"));
+        });
+    });
+
+    /* adding sell buttons */
+    $("#sell_list li a").each(function(i){
+        $(this).click(function(eventObject){
+            sell_button($(this).attr("id"));
+        });
+    });
+
+
+    /* first refresh */
+    refresh_view();
+
+
+	buildTreemap();
+
+
+});
+
+
+
+function position() {
+    this.style("left", function(d) { return d.x + "px"; })
+        .style("top", function(d) { return d.y + "px"; })
+        .style("width", function(d) { return Math.max(0, d.dx) + "px"; })
+        .style("height", function(d) { return Math.max(0, d.dy) + "px"; });
+}
+	</script>
+
+	</head>
+
+<body>
+
+<div id="treemap" style=""></div>
+<div style="position: relative; top: 100px;">
+<input name="" id="newValue" type="button" value="change"></input>
+</div>
+
+</body>
+
+</html>
