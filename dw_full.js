@@ -426,14 +426,45 @@ $(document).ready(function(){
 			;
 		});
 
-/*
+
 		setInterval( function(){
-				for (i = 0; i < 20; i++) {
 
 
-				data1["children"][i].value = Math.random() * i * i;
+		console.log("graphicUpdate");
 
+		var inventoryArray =[];
+
+				for (var key in  player.inventory) {
+    if ( player.inventory.hasOwnProperty(key)) {
+        inventoryArray.push(player.inventory[key]);
+        inventoryArray.push(player.inventory[key]);
+    }
+}
+
+
+//	console.log(player.inventory);
+
+		for (i = 0; i < 20; i++) {
+
+			var newCounter = parseInt(Math.floor(i / 2));
+			var newValue = 20;
+			var newObj =
+			{
+						"id": i*55,
+						"value": inventoryArray[i],
+						"color": "#222",
+						"keytable": "CCR",
+						"class_name":"painting-"+(i+1),
 			}
+
+
+			data1["children"][i] = newObj;
+
+		}
+
+
+
+
 			 var node = div.datum(data1).selectAll(".node")
 			    .data(treemap.nodes);
 
@@ -441,8 +472,8 @@ $(document).ready(function(){
 			//.style("background-size",Math.random()*5000 + "px")
 // 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
 			;
-		},2000);
-*/
+		},500);
+
 
 		function UpdateValues() {
 
