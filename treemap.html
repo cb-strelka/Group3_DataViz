@@ -13,11 +13,41 @@
   <script src=" https://d3js.org/d3.v3.min.js"></script>
 
 
-
 	<style>
 
+
+	/*
+
+	Chagall
+	Kandisky
+	Konchalovsky
+	Lentulov
+	Lissitky
+	Malevich
+	Petrov Vodkin
+	Popova
+	Philimonov
+	Rodchenko
+
+
+
+	chagall
+	kandisky
+	konchalovsky
+	lentulov
+	lissitky
+	malevich
+	petrovvodkin
+	popova
+	philimonov
+	rodchenko
+
+	*/
+
+
+
 	body {
-		background: black;
+		background: #222;
 	}
 
 		.node {
@@ -35,14 +65,92 @@
 		border:0px solid !important;
 	}
 
+
+
+	.chagall-01 {
+		background-image:url("paintings/chagall_01.jpg");
+
+	}
+
+	.chagall-02 {
+		background-image:url("paintings/chagall_02.jpg");
+
+	}
+
+
+		.kandinsky-01 {
+		background-image:url("paintings/kandinsky_01.jpg");
+
+	}
+
+		.kandinsky-01 {
+		background-image:url("paintings/kandinsky_01.jpg");
+
+	}
+
+		.konchalovsky-01 {
+		background-image:url("paintings/konchalovsky_01.jpg");
+	}
+
+	.konchalovsky-02 {
+		background-image:url("paintings/konchalovsky_02.jpg");
+	}
+
+
+	.lentulov-01 {
+		background-image:url("paintings/lentulov_01.jpg");
+	}
+
+	.lentulov-02 {
+		background-image:url("paintings/lentulov_02.jpg");
+	}
+
+		.lissitky-01 {
+		background-image:url("paintings/lissitky_01.jpg");
+	}
+
+	.lissitky-02 {
+		background-image:url("paintings/lissitky_02.jpg");
+	}
+
+
+
+
+
 	.malevich-01 {
 		background-image:url("paintings/malevich_01.jpg");
 	}
 
-	.kandinsky-01 {
-		background-image:url("paintings/kandinsky_01.jpg");
-
+	.malevich-02 {
+		background-image:url("paintings/malevich_02.jpg");
 	}
+
+	.petrovvodkin-01 {
+		background-image:url("paintings/petrovvodkin_01.jpg");
+	}
+
+	.petrovvodkin-02 {
+		background-image:url("paintings/petrovvodkin_02.jpg");
+	}
+
+	.philimonov-01 {
+		background-image:url("paintings/philimonov_01.jpg");
+	}
+
+	.philimonov-02 {
+		background-image:url("paintings/philimonov_02.jpg");
+	}
+
+		.rodchenko-01 {
+		background-image:url("paintings/rodchenko_01.jpg");
+	}
+
+	.rodchenko-02 {
+		background-image:url("paintings/rodchenko_02.jpg");
+	}
+
+
+
 
 
 
@@ -56,7 +164,13 @@
 			var data1 = {
 				"name": "items",
 				"children": [
-					{
+
+				]
+			};
+
+		/*
+
+		{
 						"id": "33447",
 						"value": "13",
 						"color": "#ff8080",
@@ -69,40 +183,35 @@
 						"color": "#80ff80",
 						"keytable": "COMMODITY",
 						"class_name":"kandinsky-01"
-					}
-
-				]
-			};
-
-			var data2 = {
-				"name": "items",
-				"children": [
-					{
-						"id": "33447",
-						"value": "13",
-						"color": "#ff8080",
-						"keytable": "CCR",
-						"class_name":"malevich-01"
 					},
 					{
-						"id": "33455",
-						"value": "4",
+						"id": "212",
+						"value": "90",
 						"color": "#80ff80",
 						"keytable": "COMMODITY",
-						"class_name":"malevich-02"
+						"class_name":"kandinsky-02"
 					}
-					,
-					{
-						"id": "33455",
-						"value": "40",
-						"color": "#80ffff",
-						"keytable": "COMMODITY",
+
+
+		*/
+
+		for (i = 0; i < 20; i++) {
+
+
+			var newObj =
+			{
+						"id": i*55,
+						"value": 0,
+						"color": "#222",
+						"keytable": "CCR",
 						"class_name":"malevich-01"
+			}
 
-					}
+			data1["children"][i] = newObj;
 
-				]
-			};
+		}
+
+		console.log(data1);
 
 		var margin = {top: 40, right: 10, bottom: 10, left: 10},
 			width = 760 - margin.left - margin.right,
