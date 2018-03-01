@@ -76,21 +76,52 @@ var player = new Player_Object();
 
 var item_prices = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
 
+
+
+
 var moscow_place = new Place_Object("Moscow");
 moscow_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+
 var london_place = new Place_Object("London");
 london_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+
 var new_york_place = new Place_Object("New York");
 new_york_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+
 var st_petersburg_place = new Place_Object("St. Petersburg");
 st_petersburg_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
-var miami_place = new Place_Object("Miami");
-miami_place. price_differences = {apples: .365, oranges: 3.6};
-var beijing_place = new Place_Object("Beijing");
-beijing_place. price_differences = {apples: .365, oranges: 3.6};
-var vienna_place = new Place_Object("Vienna");
-vienna_place. price_differences = {apples: .365, oranges: 3.6};
 
+var miami_place = new Place_Object("Miami");
+miami_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+
+var beijing_place = new Place_Object("Beijing");
+beijing_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+
+var vienna_place = new Place_Object("Vienna");
+vienna_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, philimonov: 0,popova : 0, rodchenko: 0};
+
+var placeList = [moscow_place,london_place, new_york_place, st_petersburg_place, miami_place, beijing_place,vienna_place ];
+
+for (i = 0; i < placeList.length; i++) {
+
+		var newObj = {
+			chagall : Math.random() * 10000000,
+			kandinsky: Math.random() * 100000,
+			konchalovsky : Math.random() * 100000,
+			lentulov: Math.random() * 1000000,
+			lissitky : Math.random() * 1000000,
+			 malevich: Math.random() * 1000000,
+			 petrovvodkin : Math.random() * 1000000,
+			 philimonov: Math.random() * 1000000,
+			 popova : Math.random() * 1000000,
+			 rodchenko: Math.random() * 100000
+
+		}
+
+		placeList[i].price_differences = newObj;
+}
+
+console.log(placeList);
 
 var location_map = {"Moscow":moscow_place, "London":london_place, "New York":new_york_place, "St Petersburg":st_petersburg_place, "Miami":miami_place};
 
