@@ -151,19 +151,34 @@ width: 400px;
 
 }
 #sell_list ul {
-  display: table-caption;
+  display: inline-block;
 
 }
 #price_list ul {
-  display: table-caption;
+  display: inline-block;
+
+}
+
+#price_list li, #sell_list li {
+	width:100%;
+	display:block;
+}
+
+#price_list a, #sell_list a {
+	width:100%;
+	text-align: center;
+	display:block;
 
 }
 
 #price_list {
+width: 49%;
+float:left;
 }
 #sell_list {
+width: 49%;
+float:left;
 }
-
 #locations ul li a {
   background: black !important;
 }
