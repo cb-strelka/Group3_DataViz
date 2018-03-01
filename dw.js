@@ -54,8 +54,8 @@ function Player_Object()
 {
     this.days_left = 30;
     this.name = "My Painting Collection";
-    this.inventory = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
-    this.money = 1000000;
+    this.inventory = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
+    this.money = 100000000;
     this.debt = 1000000;
     this.daily_interest = 0.1;
 
@@ -77,31 +77,31 @@ function Player_Object()
 
 var player = new Player_Object();
 
-var item_prices = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
+var item_prices = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 
 
 
 var moscow_place = new Place_Object("Moscow");
-moscow_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
+moscow_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 var london_place = new Place_Object("London");
-london_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
+london_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 var new_york_place = new Place_Object("New York");
-new_york_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
+new_york_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 var st_petersburg_place = new Place_Object("St. Petersburg");
-st_petersburg_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
+st_petersburg_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 var miami_place = new Place_Object("Miami");
-miami_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
+miami_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 var beijing_place = new Place_Object("Beijing");
-beijing_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
+beijing_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 var vienna_place = new Place_Object("Vienna");
-vienna_place.price_differences = {chagall : 1, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin: 0,popova : 0, rodchenko: 0};
+vienna_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 var placeList = [moscow_place,london_place, new_york_place, st_petersburg_place, miami_place, beijing_place,vienna_place ];
 
@@ -129,14 +129,14 @@ for (i = 0; i < placeList.length; i++) {
 
 console.log(placeList);
 
-var location_map = {"Moscow":moscow_place, "London":london_place, "New York":new_york_place, "St Petersburg":st_petersburg_place, "Miami":miami_place,"Vienna":vienna_place, "Beijing":beijing_place };
+var location_map = {"moscow_place":moscow_place, "london_place":london_place, "new_york_place":new_york_place, "st_petersburg_place":st_petersburg_place, "miami_place":miami_place,"vienna_place":vienna_place, "beijing_place":beijing_place };
 
 
 
 function refresh_view(){
     /* status bar */
     $("#player_name").text(player.name);
-    $("#money").text(player.money);
+    $("#money").text("$"+player.money.formatMoney(2, '.', ','));
     $("#days_left").text(player.days_left);
 
     $("#debt").text(player.debt);
@@ -149,21 +149,25 @@ function refresh_view(){
 }
 
 function move_to(place){
-    player.advance_day();
+
+
+	player.advance_day();
     place = location_map[place];
     price_list = place.get_price_list();
+
     player.price_list = price_list;
     $("#current_location").text(place.name);
-    $("#chagall .price").text(price_list.chagall);
-    $("#kandinsky .price").text(price_list.kandinsky);
-    $("#konchalovsky .price").text(price_list.konchalovsky);
-    $("#lentulov .price").text(price_list.lentulov);
-    $("#lissitky .price").text(price_list.lissitky);
-    $("#malevich .price").text(price_list.malevich);
-    $("#petrovvodkin .price").text(price_list.petrovvodkin);
-    $("#tatlin .price").text(price_list.tatlin);
-    $("#popova .price").text(price_list.popova);
-    $("#rodchenko .price").text(price_list.rodchenko);
+    $("#chagall .price").text("$"+price_list.chagall.formatMoney(2, '.', ','));
+
+    $("#kandinsky .price").text("$"+price_list.kandinsky.formatMoney(2, '.', ','));
+    $("#konchalovsky .price").text("$"+price_list.konchalovsky.formatMoney(2, '.', ','));
+    $("#lentulov .price").text("$"+price_list.lentulov.formatMoney(2, '.', ','));
+    $("#lissitky .price").text("$"+price_list.lissitky.formatMoney(2, '.', ','));
+    $("#malevich .price").text("$"+price_list.malevich.formatMoney(2, '.', ','));
+    $("#petrovvodkin .price").text("$"+price_list.petrovvodkin.formatMoney(2, '.', ','));
+    $("#tatlin .price").text("$"+price_list.tatlin.formatMoney(2, '.', ','));
+    $("#popova .price").text("$"+price_list.popova.formatMoney(2, '.', ','));
+    $("#rodchenko .price").text("$"+price_list.rodchenko.formatMoney(2, '.', ','));
 
 }
 
@@ -289,8 +293,21 @@ $(document).ready(function(){
         });
     });
 
+	  move_to(moscow_place);
 
     /* first refresh */
     refresh_view();
 
 });
+
+
+Number.prototype.formatMoney = function(c, d, t){
+var n = this,
+    c = isNaN(c = Math.abs(c)) ? 2 : c,
+    d = d == undefined ? "." : d,
+    t = t == undefined ? "," : t,
+    s = n < 0 ? "-" : "",
+    i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
+    j = (j = i.length) > 3 ? j % 3 : 0;
+   return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+ };
