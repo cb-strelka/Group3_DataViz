@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>Drug-Wars</title>
+    <link rel="stylesheet" href="reset.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8">
+
+    <script type="text/javascript" charset="utf-8" src="jquery-1.5.1.min.js"> </script>
+
+    <script type="text/javascript" charset="utf-8" src="dw.js"> </script>
+
+
+</head>
+<body>
+    <div id="game">
+        <nav>
+            <ul>
+                <li ><a href="#" id="home" class="active">Home</a></li>
+                <li><a href="#"id="work">Buy Painting Shares</a></li>
+                <li><a href="#"id="loan_shark">Bank</a></li>
+            </ul>
+        </nav><div id="content">
+            <div id="status">
+                <span>
+                    Name <span id="player_name" class="status_data"></span>
+                </span>
+                <span>
+                    Money<span id="money" class="status_data"></span>
+                </span>
+                <span>
+                    Days Left<span id="days_left" class="status_data"></span>
+                </span>
+
+            </div>
+
+            <div id="viewport">
+                <div id="home_page" class="page current_page">
+                    <h2>Home</h2>
+                    <ul>
+                        <li>
+                            <a href="#" onClick="javascript:player.advance_day();refresh_view();">Advance Day</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div  id="work_page" class="page">
+
+                    <div id="inventory">
+                        <ul>
+                            <li>
+                                Malevich <span class="malevich"></span>
+                            </li>
+                            <li>
+                                Kandinsky <span class="kandinsky"></span>
+                            </li>
+                       </ul>
+                   </div>
+
+                    <h3> Buy Painting Shares </h3>
+                    <h2 id="current_location"> Moscow</h2>
+                    <div id="price_list">
+                            <ul>
+                                <li>
+                                    <a href="#" id="malevichs" >Malevich
+                                        <div class="price"></div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" id="kandinsky" >Kandinsky
+                                        <div class="price"></div>
+                                    </a>
+                                </li>
+                            </ul>
+                    </div>
+
+                    <div id="sell_list">
+                    <p> Sell Shares </p>
+                            <ul>
+                                <li>
+                                    <a href="#" id="malevich" >Malevich
+                                        <div class="price"></div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" id="kandinsky" >Kandinsky
+                                        <div class="price"></div>
+                                    </a>
+                                </li>
+                            </ul>
+                    </div>
+
+                    <div id="locations">
+                        <h2>Where to..?</h2>
+                            <ul>
+                                <li>
+                                    <a href="#" id="moscow">Moscow</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="london">London</a>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+
+                <div id="loan_shark_page" class="page">
+                    <h2> Money To Spend </h2>
+                    <p> You need to pay off your debts if you value your knee caps. </p>
+                    <p> You owe: <span id="debt"></span></p>
+                    <form>
+                        <p> Deposit Money <input type="number" name="deposit" id="loan_shark_deposit" value="0"></p>
+                        <p> Withdraw Money <input type="number" name="withdraw" id="loan_shark_withdraw" value="0"></p>
+                        <div style="margin:10px; margin-left: 100px; cursor:pointer; background:#ccc; padding:.5em; display:inline-block;" onClick="javascript:submit_loan_shark_request();"> Yeah do it </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div id="game_end">
+        <h2> Time's up </h2>
+        <h1 id="end_message"></h1>
+        <h2>Your Score</h2>
+        <div id="the_score">
+            <p> Money <span class="money_end"> 10000</span></p>
+            <p> Debt <span class="debt_end">20</span></p>
+            <p> Score = <span class="money_end">10000</span><span style="color:red;">- 3 * </span><span class="debt_end">20</span></p>
+            <p>=<span class="score_end"> 10000000000000000000000000</span></p>
+        </div>
+</body>
+</html>

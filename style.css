@@ -1,0 +1,168 @@
+body
+{
+    background: #666;
+    font-family:sans-serif;
+}
+h1,h2,h3
+{
+    line-height: 1em;
+    margin:0;
+}
+
+h2
+{
+    font-size: 2em;
+}
+
+#game
+{
+    margin: 0.5%;
+
+}
+
+nav
+{
+
+    display:inline-block;
+    width:10%;
+}
+nav ul
+{
+    padding:0;
+    text-align:right;
+}
+
+nav a
+{
+    display:block;
+    text-decoration: none;
+    color: black;
+    list-style-type:none;
+    padding: 5px;
+    padding-right: 10px;
+}
+
+nav a:focus
+{
+    font-size: 1.08em;
+}
+
+nav .active
+{
+    background: #eef;
+}
+
+#content
+{
+
+    background: #eef;
+    display:inline-block;
+    vertical-align: top;
+    width:79%;
+    padding: 5px;
+    
+}
+
+#status 
+{
+    text-align:right;
+}
+
+#status .status_data
+{
+    background: #f6f;
+}
+
+#viewport
+{
+    background: #888;
+}
+
+#viewport .page
+{
+    display:none;
+    min-height: 150px;
+}
+
+#viewport ul
+{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+#viewport ul li
+{
+    display:inline-block;
+    margin:5px;
+}
+
+#viewport ul li a,
+#viewport ul li a:visited
+{
+    text-decoration:none;
+    color:white;
+    padding:1em;
+    background:blue;
+    display:inline-block;
+}
+
+#viewport #inventory
+{
+    float:right;
+}
+
+#viewport .current_page
+{
+    display:block;
+}
+
+#the_score
+{
+    font-size: 22px;
+}
+
+#game_end
+{
+    display:none;
+    text-align:center;
+    background: #eef;
+    margin:2em;
+    padding:1em;
+}
+
+.money_end
+{
+    color:green;
+}
+
+.debt_end
+{
+    color:red;
+}
+
+.score_end
+{
+    color:blue;
+}
+
+.money_end,
+.debt_end,
+.score_end
+{
+    font-size:2em;
+    line-height: 0;
+}
+
+/*
+#game
+{
+    display:none;
+}
+
+#game_end
+{
+    display:block;
+}
+
+*/
