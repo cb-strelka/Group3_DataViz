@@ -50,14 +50,14 @@ function Place_Object(name){
 };
 
 
-var starting_inventory = {chagall : 10, kandinsky: 5,konchalovsky : 2, lentulov: 1,lissitky : 0, malevich: 4,petrovvodkin : 0, tatlin:0,popova : 0, rodchenko: 0};
+var starting_inventory = {chagall : 0, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin:0,popova : 0, rodchenko: 0};
 
 function Player_Object()
 {
     this.days_left = 30;
     this.name = "My Painting Collection";
     this.inventory = starting_inventory;
-    this.money = 100000000;
+    this.money = 1000000;
     this.debt = 1000000;
     this.daily_interest = 0.1;
 
