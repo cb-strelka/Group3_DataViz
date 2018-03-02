@@ -369,7 +369,7 @@ $(document).ready(function(){
 			var newObj =
 			{
 						"id": i*55,
-						"value": inventoryArray[i],
+						"value": inventoryArray[i] + (Math.random() * 5),
 						"color": "#222",
 						"keytable": "CCR",
 						"class_name":"painting-"+(i+1),
