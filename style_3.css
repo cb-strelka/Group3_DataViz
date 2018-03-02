@@ -361,6 +361,8 @@ padding: 3px 3px 5px 2px;
 	}
 
 		.node {
+
+			background:none;
   font: 10px sans-serif;
   line-height: 12px;
   overflow: hidden;

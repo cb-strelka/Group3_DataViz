@@ -21,7 +21,7 @@ var data1 = {};
 
 var globalPaintingCounter = 0;
 
-var last_painting_bought = "";
+var last_painting_bought = "malevich";
 
 $(document).ready(function(){
 
@@ -468,6 +468,7 @@ function game_end(){
 */
 
 
+
 			var classCounter = "_01";
 
 			if (Math.random() > 0.5) {
@@ -479,7 +480,7 @@ function game_end(){
 			var newObj =
 			{
 						"id": globalPaintingCounter,
-						"value": 50,
+						"value": Math.random()*30,
 						"color": "#222",
 						"keytable": "CCR",
 // 						"class_name":"painting-"+(i+1),
@@ -491,6 +492,15 @@ function game_end(){
 
 
 			data1["children"].push(newObj);
+
+
+			for (var key in data1["children"]) {
+						    if (data1["children"].hasOwnProperty(key)) {
+
+						      console.log("testOut:" + data1["children"][key]);
+
+				    }
+				}
 
 			console.log(data1);
 
