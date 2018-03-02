@@ -305,6 +305,8 @@ function game_end(){
     }
 }
 
+
+
 		for (i = 0; i < 20; i++) {
 
 			var newCounter = parseInt(Math.floor(i / 2));

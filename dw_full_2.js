@@ -19,6 +19,8 @@ rodchenko
 
 var data1 = {};
 
+var last_painting_bought = "";
+
 $(document).ready(function(){
 
 
@@ -186,6 +188,9 @@ function move_to(place){
 function buy_button(item){
     if (item in player.price_list){ //this will just straight up crash, meh.
 
+
+		last_painting_bought = item + "";
+
         price = player.price_list[item];
         max_items = Math.floor(player.money / price);
 
@@ -305,14 +310,14 @@ function game_end(){
     }
 }
 
-		for (i = 0; i < 20; i++) {
+		for (i = 0; i < 1; i++) {
 
 			var newCounter = parseInt(Math.floor(i / 2));
 			var newValue = 20;
 			var newObj =
 			{
 						"id": i*55,
-						"value": inventoryArray[i] + (Math.random() * 5),
+						"value": 0,
 						"color": "#222",
 						"keytable": "CCR",
 						"class_name":"painting-"+(i+1),
@@ -347,15 +352,6 @@ function game_end(){
 			;
 
 
-
-		var node = div.datum(data1).selectAll(".node")
-			.data(treemap.nodes)
-			.enter().append("div")
-			.attr("class", function(d) { return "node " +  d.class_name; })
-			.call(position)
-			//.style("background", function(d) { return d.color ? d.color : "#ffffff"; })
-// 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
-			;
 
 		d3.selectAll("#newValue").on("click", function() {
             var node = div.datum(data2).selectAll(".node")
@@ -429,11 +425,6 @@ function game_end(){
 
 		 price_list = player.price_list;
 
-
-   // $("#current_location").text(place.name);
-   // $("#chagall .price").text("$"+price_list.chagall.formatMoney(2, '.', ','));
-
-
    			for (var key in price_list) {
 			    if ( price_list.hasOwnProperty(key)) {
 			        priceVariable.push(price_list[key]);
@@ -441,22 +432,47 @@ function game_end(){
 					}
 				}
 
-			console.log(priceVariable);
-
 
 			for (var key in  player.inventory) {
 			    if ( player.inventory.hasOwnProperty(key)) {
 			        inventoryArray.push(player.inventory[key]);
-			         inventoryArray.push(0);
+			        // inventoryArray.push(0);
 					}
 				}
 
-		for (i = 0; i < 20; i++) {
+			var count = 0;
+			for (var key in player.inventory) {
+			    if (player.inventory.hasOwnProperty(key)) {
+
+			      //console.log("testOut:" + player.inventory[key]);
+			       count += player.inventory[key];
+			    }
+			}
+
+
+				console.log("INVENTORY: " + count);
+
+
+		data1 = {
+				"name": "items",
+				"children": [
+
+				]
+			};
+
+
+
+		for (i = 0; i < count; i++) {
 
 			var newCounter = parseInt(Math.floor(i / 2));
 			var newValue = 20;
 
 
+			var classCounter = "_01";
+
+			if (Math.random() > 0.5) {
+				classCounter = "_02";
+			}
 
 			var newObj =
 			{
@@ -464,14 +480,29 @@ function game_end(){
 						"value": inventoryArray[i] * priceVariable[i],
 						"color": "#222",
 						"keytable": "CCR",
-						"class_name":"painting-"+(i+1),
+// 						"class_name":"painting-"+(i+1),
+						"class_name":last_painting_bought+classCounter,
+
 			}
+
+
 
 
 			data1["children"][i] = newObj;
 
 			}
 
+
+
+
+		var node = div.datum(data1).selectAll(".node")
+			.data(treemap.nodes)
+			.enter().append("div")
+			.attr("class", function(d) { return "node " +  d.class_name; })
+			.call(position)
+			//.style("background", function(d) { return d.color ? d.color : "#ffffff"; })
+// 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
+			;
 
 
 
