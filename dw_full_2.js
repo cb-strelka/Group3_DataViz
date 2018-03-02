@@ -224,7 +224,7 @@ function sell_button(item){
         profit = price;
         player.inventory[item] = player.inventory[item] - 1;
         player.money = player.money + profit;
-         SubtractTreeMap();
+         AddToTreeMap();
         refresh_view();
     }
     else{
