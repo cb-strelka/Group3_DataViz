@@ -166,7 +166,7 @@ function move_to(place){
     price_list = place.get_price_list();
 
     player.price_list = price_list;
-    $("#current_location").text(place.name);
+    $("#current_location").text("Current Auction:" + place.name);
     $("#chagall .price").text("$"+price_list.chagall.formatMoney(2, '.', ','));
 
     $("#kandinsky .price").text("$"+price_list.kandinsky.formatMoney(2, '.', ','));

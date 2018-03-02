@@ -244,12 +244,17 @@ width: 120px;
 float:left;
 }
 #locations ul li a {
-  background: black !important;
+  font-size: 0.6rem;
+    background: none;;
+
+  text-transform: uppercase;
+/*   border-radius: 0.3rem; */
 }
 #locations ul li  {
-  background: black !important;
+  background: rgba(74, 74, 74, 0.81) !important;
   text-align: center;
-  padding: 5px;
+  padding: 2px;
+  margin:0;
 }
 .money_end
 {
