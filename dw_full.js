@@ -175,11 +175,21 @@ function move_to(place){
 
 function buy_button(item){
     if (item in player.price_list){ //this will just straight up crash, meh.
+
         price = player.price_list[item];
         max_items = Math.floor(player.money / price);
-        player.money = player.money - (max_items*price);  // pay moneys
-        player.inventory[item] = player.inventory[item] + max_items;  // get items
+
+		if (max_items > 0) {
+
+
+			 player.money = player.money - (1 *price);
+			 player.inventory[item] = player.inventory[item] + 1;
+		}
+
+      //  player.money = player.money - (max_items*price);  // pay moneys
+      //  player.inventory[item] = player.inventory[item] + max_items;  // get items
         refresh_view();
+
 
     }
     else{
