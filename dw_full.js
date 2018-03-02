@@ -17,6 +17,13 @@ popova
 rodchenko
 */
 
+var data1 = {};
+
+$(document).ready(function(){
+
+
+
+
 function Place_Object(name){
     this.name = name;
     this.price_differences = {chagall: 1, kandinsky : 1,konchalovsky: 1, lentulov : 1,lissitky: 1, malevich : 1,petrovvodkin: 1, tatlin : 1,popova: 1, rodchenko : 1};
@@ -144,14 +151,15 @@ function refresh_view(){
     $("#debt").text(player.debt);
 
     /* inventory box */
-    $("#inventory span").each(function(){
+    $("#inventory div").each(function(){
         $(this).text(player.inventory[$(this).attr("class")]);
     });
+
+    UpdateTreeMap();
 
 }
 
 function move_to(place){
-
 
 	player.advance_day();
     place = location_map[place];
@@ -170,6 +178,8 @@ function move_to(place){
     $("#tatlin .price").text("$"+price_list.tatlin.formatMoney(2, '.', ','));
     $("#popova .price").text("$"+price_list.popova.formatMoney(2, '.', ','));
     $("#rodchenko .price").text("$"+price_list.rodchenko.formatMoney(2, '.', ','));
+
+	UpdateTreeMap();
 
 }
 
@@ -277,98 +287,21 @@ function game_end(){
     $("#game_end").css("display","block");
 }
 
-$(document).ready(function(){
-    //add click stuff to ui
 
-    /* adding page buttons */
-
-    $("nav a").each(function(i){
-        $(this).click(function(eventObject){
-            render_new_page($(this).attr("id"));
-        });
-        $(this).css("cursor","pointer");
-    });
-
-    /* adding location movement links */
-    $("#locations li a").each(function(i){
-        $(this).click(function(eventObject){
-            move_to($(this).attr("id"));
-        });
-    });
-
-    /* adding buy buttons */
-    $("#price_list li a").each(function(i){
-        $(this).click(function(eventObject){
-            buy_button($(this).attr("id"));
-
-        });
-    });
-
-    /* adding sell buttons */
-    $("#sell_list li a").each(function(i){
-        $(this).click(function(eventObject){
-            sell_button($(this).attr("id"));
-        });
-    });
-
-	 // move_to(moscow_place);
-
-    /* first refresh */
-
-    refresh_view();
-
-		function buildTreemap(){
-
-			var data1 = {
+		 data1 = {
 				"name": "items",
 				"children": [
 
 				]
 			};
 
-		/*
-
-		{
-						"id": "33447",
-						"value": "13",
-						"color": "#ff8080",
-						"keytable": "CCR",
-						"class_name":"malevich-01"
-					},
-					{
-						"id": "33455",
-						"value": "90",
-						"color": "#80ff80",
-						"keytable": "COMMODITY",
-						"class_name":"kandinsky-01"
-					},
-					{
-						"id": "212",
-						"value": "90",
-						"color": "#80ff80",
-						"keytable": "COMMODITY",
-						"class_name":"kandinsky-02"
-					}
-
-
-		*/
-
-		console.log( player.inventory);
 
 		var inventoryArray = [];
-
-/*
-		for (var value in  player.inventory) {
-		    if ( player.inventory.hasOwnProperty(value)) {
-		      console.log(value);
-		    }
-	}
-*/
 
 		for (var key in  player.inventory) {
     if ( player.inventory.hasOwnProperty(key)) {
         inventoryArray.push(player.inventory[key]);
-        inventoryArray.push(player.inventory[key]);
+        inventoryArray.push(0);
     }
 }
 
@@ -429,7 +362,7 @@ $(document).ready(function(){
 			    .data(treemap.nodes);
             node.enter().append("div")
 			.attr("class", "node")
-			.style("background-size",Math.random()*2000 + "px");
+			//.style("background-size",Math.random()*2000 + "px");
             node.transition().duration(5000).call(position)
 			//.style("background", function(d) { return d.color ? d.color : "#ffffff"; })
 // 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
@@ -437,31 +370,98 @@ $(document).ready(function(){
 		});
 
 
-		setInterval( function(){
+
+    //add click stuff to ui
+
+    /* adding page buttons */
+
+    $("nav a").each(function(i){
+        $(this).click(function(eventObject){
+            render_new_page($(this).attr("id"));
+        });
+        $(this).css("cursor","pointer");
+    });
+
+    /* adding location movement links */
+    $("#locations li a").each(function(i){
+        $(this).click(function(eventObject){
+            move_to($(this).attr("id"));
+        });
+    });
+
+    /* adding buy buttons */
+    $("#price_list li a").each(function(i){
+        $(this).click(function(eventObject){
+            buy_button($(this).attr("id"));
+
+        });
+    });
+
+    /* adding sell buttons */
+    $("#sell_list li a").each(function(i){
+        $(this).click(function(eventObject){
+            sell_button($(this).attr("id"));
+        });
+    });
+
+	 // move_to(moscow_place);
+
+    /* first refresh */
+
+    refresh_view();
+
+		function buildTreemap(){
 
 
-		console.log("graphicUpdate");
+
+	};
+
+	buildTreemap();
+
+
+	function UpdateTreeMap() {
+				console.log("graphicUpdate");
 
 		var inventoryArray =[];
 
-				for (var key in  player.inventory) {
-    if ( player.inventory.hasOwnProperty(key)) {
-        inventoryArray.push(player.inventory[key]);
-        inventoryArray.push(player.inventory[key]);
-    }
-}
+		var priceVariable =[];
 
 
-//	console.log(player.inventory);
+		 price_list = player.price_list;
+
+
+   // $("#current_location").text(place.name);
+   // $("#chagall .price").text("$"+price_list.chagall.formatMoney(2, '.', ','));
+
+
+   			for (var key in price_list) {
+			    if ( price_list.hasOwnProperty(key)) {
+			        priceVariable.push(price_list[key]);
+			        priceVariable.push(price_list[key]);
+					}
+				}
+
+			console.log(priceVariable);
+
+
+			for (var key in  player.inventory) {
+			    if ( player.inventory.hasOwnProperty(key)) {
+			        inventoryArray.push(player.inventory[key]);
+			         inventoryArray.push(0);
+					}
+				}
 
 		for (i = 0; i < 20; i++) {
 
 			var newCounter = parseInt(Math.floor(i / 2));
 			var newValue = 20;
+
+
+
 			var newObj =
 			{
 						"id": i*55,
-						"value": inventoryArray[i],
+						"value": inventoryArray[i] * priceVariable[i],
 						"color": "#222",
 						"keytable": "CCR",
 						"class_name":"painting-"+(i+1),
@@ -470,7 +470,7 @@ $(document).ready(function(){
 
 			data1["children"][i] = newObj;
 
-		}
+			}
 
 
 
@@ -478,26 +478,9 @@ $(document).ready(function(){
 			 var node = div.datum(data1).selectAll(".node")
 			    .data(treemap.nodes);
 
-			node.transition().duration(300).call(position)
-			//.style("background-size",Math.random()*5000 + "px")
-// 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
-			;
-		},500);
-
-
-		function UpdateValues() {
-
-
+			node.transition().duration(300).call(position);
 		}
 
-
-		function UpdateTreeMap() {
-
-		}
-
-	};
-
-	buildTreemap();
 
 	setTimeout(function(){
 
@@ -505,6 +488,24 @@ $(document).ready(function(){
 				$("#moscow_place").trigger("click");
 
 		}, 200);
+
+
+	$("#menuClose").click(function(){
+
+		$("#float_game").toggleClass("hide");
+		$("#treemap").toggleClass("in-game");
+			$("body").toggleClass("in-game");
+
+		if( $("#menuClose").text() == "X") {
+
+			$("#menuClose").text("show");
+
+		} else {
+
+			$("#menuClose").text("X");
+		}
+
+	})
 
 
 });
