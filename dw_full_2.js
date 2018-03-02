@@ -9,7 +9,7 @@
 kandinsky
 konchalovsky
 lentulov
-lissitky
+lissitsky
 malevich
 petrovvodkin
 tatlin
@@ -28,7 +28,7 @@ $(document).ready(function(){
 
 function Place_Object(name){
     this.name = name;
-    this.price_differences = {chagall: 1, kandinsky : 1,konchalovsky: 1, lentulov : 1,lissitky: 1, malevich : 1,petrovvodkin: 1, tatlin : 1,popova: 1, rodchenko : 1};
+    this.price_differences = {chagall: 1, kandinsky : 1,konchalovsky: 1, lentulov : 1,lissitsky: 1, malevich : 1,petrovvodkin: 1, tatlin : 1,popova: 1, rodchenko : 1};
 
     this.get_price_list = function(){
 
@@ -36,7 +36,7 @@ function Place_Object(name){
         kandinsky_price = item_prices.kandinsky * this.price_differences.kandinsky;
         konchalovsky_price = item_prices.konchalovsky * this.price_differences.konchalovsky;
         lentulov_price = item_prices.lentulov * this.price_differences.lentulov;
-        lissitky_price = item_prices.lissitky * this.price_differences.lissitky;
+        lissitsky_price = item_prices.lissitsky * this.price_differences.lissitsky;
         malevich_price = item_prices.malevich * this.price_differences.malevich;
         petrovvodkin_price = item_prices.petrovvodkin * this.price_differences.petrovvodkin;
         tatlin_price = item_prices.tatlin * this.price_differences.tatlin;
@@ -47,19 +47,19 @@ function Place_Object(name){
         kandinsky_price= Math.floor(kandinsky_price);
         konchalovsky_price= Math.floor(konchalovsky_price);
         lentulov_price= Math.floor(lentulov_price);
-        lissitky_price= Math.floor(lissitky_price);
+        lissitsky_price= Math.floor(lissitsky_price);
         malevich_price= Math.floor(malevich_price);
         petrovvodkin_price= Math.floor(petrovvodkin_price);
         tatlin_price= Math.floor(tatlin_price);
         popova_price= Math.floor(popova_price);
         rodchenko_price= Math.floor(rodchenko_price);
 
-        return {chagall:chagall_price, kandinsky:kandinsky_price, konchalovsky:konchalovsky_price, lentulov:lentulov_price, lissitky:lissitky_price, malevich:malevich_price, petrovvodkin:petrovvodkin_price, tatlin:tatlin_price, popova:popova_price, rodchenko:rodchenko_price};
+        return {chagall:chagall_price, kandinsky:kandinsky_price, konchalovsky:konchalovsky_price, lentulov:lentulov_price, lissitsky:lissitsky_price, malevich:malevich_price, petrovvodkin:petrovvodkin_price, tatlin:tatlin_price, popova:popova_price, rodchenko:rodchenko_price};
     };
 };
 
 
-var starting_inventory = {chagall : 0, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitky : 0, malevich: 0,petrovvodkin : 0, tatlin:0,popova : 0, rodchenko: 0};
+var starting_inventory = {chagall : 0, kandinsky: 0,konchalovsky : 0, lentulov: 0,lissitsky : 0, malevich: 0,petrovvodkin : 0, tatlin:0,popova : 0, rodchenko: 0};
 
 function Player_Object()
 {
@@ -88,31 +88,31 @@ function Player_Object()
 
 var player = new Player_Object();
 
-var item_prices = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
+var item_prices = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitsky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 
 
 
 var moscow_place = new Place_Object("Moscow");
-moscow_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
+moscow_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitsky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 var london_place = new Place_Object("London");
-london_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
+london_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitsky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 var new_york_place = new Place_Object("New York");
-new_york_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
+new_york_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitsky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 var st_petersburg_place = new Place_Object("St. Petersburg");
-st_petersburg_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
+st_petersburg_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitsky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 var miami_place = new Place_Object("Miami");
-miami_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
+miami_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitsky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 var beijing_place = new Place_Object("Beijing");
-beijing_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
+beijing_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitsky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 var vienna_place = new Place_Object("Vienna");
-vienna_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
+vienna_place.price_differences = {chagall : 1, kandinsky: 1,konchalovsky : 1, lentulov: 1,lissitsky : 1, malevich: 1,petrovvodkin : 1, tatlin: 1,popova : 1, rodchenko: 1};
 
 var placeList = [moscow_place,london_place, new_york_place, st_petersburg_place, miami_place, beijing_place,vienna_place ];
 
@@ -123,7 +123,7 @@ for (i = 0; i < placeList.length; i++) {
 			kandinsky: Math.random() * 100000,
 			konchalovsky : Math.random() * 100000,
 			lentulov: Math.random() * 1000000,
-			lissitky : Math.random() * 1000000,
+			lissitsky : Math.random() * 1000000,
 			 malevich: Math.random() * 1000000,
 			 petrovvodkin : Math.random() * 1000000,
 			 tatlin: Math.random() * 1000000,
@@ -174,7 +174,7 @@ function move_to(place){
     $("#kandinsky .price").text("$"+price_list.kandinsky.formatMoney(2, '.', ','));
     $("#konchalovsky .price").text("$"+price_list.konchalovsky.formatMoney(2, '.', ','));
     $("#lentulov .price").text("$"+price_list.lentulov.formatMoney(2, '.', ','));
-    $("#lissitky .price").text("$"+price_list.lissitky.formatMoney(2, '.', ','));
+    $("#lissitsky .price").text("$"+price_list.lissitsky.formatMoney(2, '.', ','));
     $("#malevich .price").text("$"+price_list.malevich.formatMoney(2, '.', ','));
     $("#petrovvodkin .price").text("$"+price_list.petrovvodkin.formatMoney(2, '.', ','));
     $("#tatlin .price").text("$"+price_list.tatlin.formatMoney(2, '.', ','));
@@ -477,7 +477,7 @@ function game_end(){
 			var newObj =
 			{
 						"id": i*55,
-						"value": inventoryArray[i] * priceVariable[i],
+						"value": Math.random() * 20,
 						"color": "#222",
 						"keytable": "CCR",
 // 						"class_name":"painting-"+(i+1),
@@ -493,13 +493,17 @@ function game_end(){
 			}
 
 
+		var randomPosition = (Math.random() * 100) + "% " + (Math.random() * 100) + "%";
 
+
+			console.log(randomPosition);
 
 		var node = div.datum(data1).selectAll(".node")
 			.data(treemap.nodes)
 			.enter().append("div")
 			.attr("class", function(d) { return "node " +  d.class_name; })
 			.call(position)
+			.style("background-position",randomPosition+"");
 			//.style("background", function(d) { return d.color ? d.color : "#ffffff"; })
 // 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
 			;

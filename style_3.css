@@ -21,6 +21,8 @@ h1,h2,h3
 {
     line-height: 1em;
     margin:0;
+    margin-bottom: 10px;
+
 }
 
 h2
@@ -51,12 +53,13 @@ transition: 0.4s all ease;
 
 nav
 {
-  display:inline-block;
-  position: absolute;
-  z-index: 400;
-  right: 10px;
-  top:810px;
-  padding:15px;
+  display: none;
+     position: absolute;
+     z-index: 400;
+     right: 400px;
+     top: 20px;
+     padding: 15px;
+
   }
 nav ul
 {
@@ -98,7 +101,7 @@ nav .active
     display:inline-block;
     vertical-align: top;
     padding: 5px;
-	width: 400px;
+	width: 420px;
 	position: relative;
 	z-index:99;
 }
@@ -205,6 +208,7 @@ nav .active
 #sell_list ul li a {
   background:red !important;
 
+
 }
 #sell_list ul {
 /*   display: inline-block; */
@@ -227,6 +231,7 @@ nav .active
 	width:100%;
 	text-align: center;
 	display:block;
+  padding: 5px !important;
 
 }
 
@@ -242,11 +247,13 @@ float:left;
 #sell_list {
 width: 120px;
 float:left;
+margin-left: 15px;
+
 }
 #locations ul li a {
   font-size: 0.6rem;
-    background: none;;
-
+    background: none;
+padding: 3px 3px 5px 2px;
   text-transform: uppercase;
 /*   border-radius: 0.3rem; */
 }
@@ -279,6 +286,25 @@ float:left;
     line-height: 0;
 }
 
+#locations {
+  margin-bottom: 15px;
+}
+.my_money{
+  text-align: left;
+  padding-left:50px;
+  padding-bottom: 10px;
+}
+.my_days_left{
+  text-align: left;
+  padding-left:50px;
+  padding-bottom: 10px;
+}
+#menuClose {
+  float:left;
+}
+#current_location {
+  padding-left: 50px;
+}
 /*
 #game
 {
@@ -300,7 +326,7 @@ float:left;
 	Kandisky
 	Konchalovsky
 	Lentulov
-	Lissitky
+	lissitsky
 	Malevich
 	Petrov Vodkin
 	Popova
@@ -313,7 +339,7 @@ float:left;
 	kandisky
 	konchalovsky
 	lentulov
-	lissitky
+	lissitsky
 	malevich
 	petrovvodkin
 	popova
@@ -367,7 +393,7 @@ float:left;
 
 	.node {
 /* 		background-size:300%; */
-/* 		background-size: 2500px; */
+/* 		background-size: 4500px; */
 		background-position:50% 50%;
 		border:1px solid rgba(252, 252, 252, 0.74) !important;
 
@@ -375,7 +401,7 @@ float:left;
 
 	.painting-1 {
 		background-image:url("paintings/chagall_01.jpg");
-		background-size: 800px;
+		background-size: 1500px;
 	}
 
 	.painting-2 {
@@ -387,17 +413,17 @@ float:left;
 
 	.painting-3 {
 		background-image:url("paintings/kandinsky_01.jpg");
-		background-size: 2500px;
+		background-size: 4500px;
 	}
 
 	.painting-4 {
 		background-image:url("paintings/kandinsky_02.jpg");
-		background-size: 2500px;
+		background-size: 4500px;
 	}
 
 	.painting-5 {
 		background-image:url("paintings/konchalovsky_01.jpg");
-		background-size: 2500px;
+		background-size: 4500px;
 	}
 
 	.painting-6 {
@@ -408,22 +434,22 @@ float:left;
 
 	.painting-7 {
 		background-image:url("paintings/lentulov_01.jpg");
-		background-size: 2500px;
+		background-size: 4500px;
 	}
 
 	.painting-8 {
 		background-image:url("paintings/lentulov_02.jpg");
-		background-size: 2500px;
+		background-size: 4500px;
 	}
 
 	.painting-9 {
 		background-image:url("paintings/lissitsky_01.jpg");
-		background-size: 800px;
+		background-size: 1500px;
 	}
 
 	.painting-10 {
 		background-image:url("paintings/lissitsky_02.jpg");
-		background-size: 800px;
+		background-size: 1500px;
 	}
 
 	.painting-11 {
@@ -438,7 +464,7 @@ float:left;
 
 	.painting-13 {
 		background-image:url("paintings/petrovvodkin_01.jpg");
-				background-size: 2500px;
+				background-size: 4500px;
 
 	}
 
@@ -457,19 +483,19 @@ float:left;
 
 	.painting-16 {
 		background-image:url("paintings/popova_02.jpg");
-						background-size: 800px;
+						background-size: 1500px;
 
 	}
 
 	.painting-17 {
 		background-image:url("paintings/rodchenko_01.jpg");
-						background-size: 2500px;
+						background-size: 4500px;
 
 	}
 
 	.painting-18 {
 		background-image:url("paintings/rodchenko_02.jpg");
-						background-size: 800px;
+						background-size: 1500px;
 
 	}
 
@@ -481,13 +507,13 @@ float:left;
 
 	.painting-20 {
 		background-image:url("paintings/tatlin_02.jpg");
-						background-size: 2500px;
+						background-size: 4500px;
 
 	}
 
 	.chagall_01 {
 		background-image:url("paintings/chagall_01.jpg");
-		background-size: 800px;
+		background-size: 1500px;
 	}
 
 	.chagall_02 {
@@ -499,17 +525,17 @@ float:left;
 
 	.kandinsky_01 {
 		background-image:url("paintings/kandinsky_01.jpg");
-		background-size: 2500px;
+		background-size: 4500px;
 	}
 
 	.kandinsky_02 {
 		background-image:url("paintings/kandinsky_02.jpg");
-		background-size: 2500px;
+		background-size: 4500px;
 	}
 
 	.konchalovsky_01 {
 		background-image:url("paintings/konchalovsky_01.jpg");
-		background-size: 2500px;
+		background-size: 4500px;
 	}
 
 	.konchalovsky_02 {
@@ -520,22 +546,22 @@ float:left;
 
 	.lentulov_01 {
 		background-image:url("paintings/lentulov_01.jpg");
-		background-size: 2500px;
+		background-size: 4500px;
 	}
 
 	.lentulov_02 {
 		background-image:url("paintings/lentulov_02.jpg");
-		background-size: 2500px;
+		background-size: 4500px;
 	}
 
 	.lissitsky_01 {
 		background-image:url("paintings/lissitsky_01.jpg");
-		background-size: 800px;
+		background-size: 1500px;
 	}
 
 	.lissitsky_02 {
 		background-image:url("paintings/lissitsky_02.jpg");
-		background-size: 800px;
+		background-size: 1500px;
 	}
 
 	.malevich_01 {
@@ -550,7 +576,7 @@ float:left;
 
 	.petrovvodkin_01 {
 		background-image:url("paintings/petrovvodkin_01.jpg");
-				background-size: 2500px;
+				background-size: 4500px;
 
 	}
 
@@ -569,19 +595,19 @@ float:left;
 
 	.popova_02 {
 		background-image:url("paintings/popova_02.jpg");
-						background-size: 800px;
+						background-size: 1500px;
 
 	}
 
 	.rodchenko_01 {
 		background-image:url("paintings/rodchenko_01.jpg");
-						background-size: 2500px;
+						background-size: 4500px;
 
 	}
 
 	.rodchenko_02 {
 		background-image:url("paintings/rodchenko_02.jpg");
-						background-size: 800px;
+						background-size: 1500px;
 
 	}
 
@@ -593,7 +619,6 @@ float:left;
 
 	.tatlin_02 {
 		background-image:url("paintings/tatlin_02.jpg");
-						background-size: 2500px;
+						background-size: 4500px;
 
 	}
-
