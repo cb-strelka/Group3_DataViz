@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>Art Miles</title>
+    <link rel="stylesheet" href="reset.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="style_2.css" type="text/css" media="screen" charset="utf-8">
+
+   	<script
+  src="https://code.jquery.com/jquery-1.9.1.min.js"
+  integrity="sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ="
+  crossorigin="anonymous"></script>
+
+    <script src=" https://d3js.org/d3.v3.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="dw_full.js"> </script>
+
+
+</head>
+<body>
+    <div id="float_game">
+
+
+      <div id="right_float">
+
+
+		  <div id="nav_nav">
+		  <nav>
+		      <ul>
+		          <li ><a href="#" id="home" class="active">Home</a></li>
+		          <li><a href="#"id="work">Buy Painting Shares</a></li>
+		          <li><a href="#"id="loan_shark">Bank</a></li>
+		      </ul>
+		  </nav>
+		</div>
+
+
+    <div id="content">
+
+	       <div><a href="#" id="menuClose">X</a></div>
+
+
+
+    <div id="game">
+
+            <div id="status">
+                <div class="my_money">
+                    <strong>Your Bank: </strong><span id="money" class="status_data"></span>
+                </div>
+                <div class="my_days_left">
+                     <strong>Auctions Left: </strong><span id="days_left" class="status_data"></span>
+                </div>
+
+            </div>
+
+            <div id="viewport">
+                <div id="home_page" class="page current_page">
+                    <ul>
+                        <li>
+                            <a href="#" onClick="javascript:player.advance_day();refresh_view();">Advance Day</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div  id="work_page" class="page">
+
+                    <div >
+                                        </div>
+
+                    <h2 id="current_location">Current Location: Moscow</h2>
+
+                     <div id="locations">
+                            <ul>
+                                <li>
+                                    <a href="#" id="moscow_place">Moscow</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="london_place">London</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="new_york_place">New York</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="st_petersburg_place">St Petersburg</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="miami_place">Miami</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="beijing_place">Beijing</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="vienna_place">Vienna</a>
+                                </li>
+                            </ul>
+                    </div>
+
+
+                    <div id="market_wrapper">
+                    <div id="price_list">
+
+	                    	   <ul id="inventory">
+                            <li>
+                                Chagall <div class="chagall"></div>
+                            </li>
+                            <li>
+                                Kandinsky <div class="kandinsky"></div>
+                            </li>
+                            <li>
+                                Konchalovsky <div class="konchalovsky"></div>
+                            </li>
+                            <li>
+                                Lentulov <div class="lentulov"></div>
+                            </li>
+                            <li>
+                                lissitsky <div class="lissitsky"></div>
+                            </li>
+                            <li>
+                                Malevich <div class="malevich"></div>
+                            </li>
+                            <li>
+                                Petrovvodkin <div class="petrovvodkin"></div>
+                            </li>
+                            <li>
+                                Tatlin <div class="tatlin"></div>
+                            </li>
+                            <li>
+                                Popova <div class="popova"></div>
+                            </li>
+                            <li>
+                                Rodchenko <div class="rodchenko"></div>
+                            </li>
+                       </ul>
+
+
+                            <ul>
+                                <li>
+                                    <a href="#" id="chagall" >
+                                        <div class="price"></div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" id="kandinsky" >
+                                        <div class="price"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" id="konchalovsky" >
+                                        <div class="price"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" id="lentulov" >
+                                        <div class="price"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" id="lissitsky" >
+                                        <div class="price"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" id="malevich" >
+                                        <div class="price"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" id="petrovvodkin" >
+                                        <div class="price"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" id="tatlin" >
+                                        <div class="price"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" id="popova" >
+                                        <div class="price"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" id="rodchenko" >
+                                        <div class="price"></div>
+                                    </a>
+                                </li>
+                            </ul>
+                    </div>
+
+                    <div id="sell_list">
+                            <ul>
+                              <li>
+                                  <a href="#" id="chagall" >
+                                      <div class="price"></div>
+                                  </a>
+                              </li>
+
+                              <li>
+                                  <a href="#" id="kandinsky" >
+                                      <div class="price"></div>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="#" id="konchalovsky" >
+                                      <div class="price"></div>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="#" id="lentulov" >
+                                      <div class="price"></div>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="#" id="lissitsky" >
+                                      <div class="price"></div>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="#" id="malevich" >
+                                      <div class="price"></div>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="#" id="petrovvodkin" >
+                                      <div class="price"></div>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="#" id="tatlin" >
+                                      <div class="price"></div>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="#" id="popova" >
+                                      <div class="price"></div>
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="#" id="rodchenko" >
+                                      <div class="price"></div>
+                                  </a>
+                              </li>
+                            </ul>
+                    </div>
+</div>
+                                   </div>
+
+                <div id="loan_shark_page" class="page">
+                    <h2> Money To Spend </h2>
+                    <p> You need to pay off your debts if you value your knee caps. </p>
+                    <p> You owe: <span id="debt"></span></p>
+                    <form>
+                        <p> Deposit Money <input type="number" name="deposit" id="loan_shark_deposit" value="0"></p>
+                        <p> Withdraw Money <input type="number" name="withdraw" id="loan_shark_withdraw" value="0"></p>
+                        <div style="margin:10px; margin-left: 100px; cursor:pointer; background:#ccc; padding:.5em; display:inline-block;" onClick="javascript:submit_loan_shark_request();"> Yeah do it </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+</div>
+
+    </div>
+  </div>
+    <div id="game_end">
+        <h2> Time's up </h2>
+        <h1 id="end_message"></h1>
+        <h2>Your Score</h2>
+        <div id="the_score">
+            <p> Money <span class="money_end"> 10000</span></p>
+            <p> Debt <span class="debt_end">20</span></p>
+            <p> Score = <span class="money_end">10000</span><span style="color:red;">- 3 * </span><span class="debt_end">20</span></p>
+            <p>=<span class="score_end"> 10000000000000000000000000</span></p>
+        </div>
+
+    </div>
+
+<div id="treemap" class="in-game" style=""></div>
+
+
+
+</body>
+</html>
