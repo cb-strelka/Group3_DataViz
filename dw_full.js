@@ -64,7 +64,7 @@ function Player_Object()
     this.days_left = 30;
     this.name = "My Painting Collection";
     this.inventory = starting_inventory;
-    this.money = 1000000;
+    this.money = 100000000;
     this.debt = 1000000;
     this.daily_interest = 0.1;
 
