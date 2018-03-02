@@ -205,6 +205,8 @@ function buy_button(item){
 
       //  player.money = player.money - (max_items*price);  // pay moneys
       //  player.inventory[item] = player.inventory[item] + max_items;  // get items
+
+        AddToTreeMap();
         refresh_view();
 
 
@@ -219,9 +221,10 @@ function sell_button(item){
     if (item in player.price_list){ //this will just straight up crash, meh.
         price = player.price_list[item];
         items = player.inventory[item];
-        profit = items*price;
-        player.inventory[item] = 0;
+        profit = price;
+        player.inventory[item] = player.inventory[item] - 1;
         player.money = player.money + profit;
+         AddToTreeMap();
         refresh_view();
     }
     else{
@@ -469,6 +472,102 @@ function game_end(){
 
 
 
+			for (var key in data1["children"]) {
+						    if (data1["children"].hasOwnProperty(key)) {
+
+						      console.log("testOut:" + data1["children"][key]);
+
+				    }
+				}
+
+			console.log(data1);
+
+		for (i = 0; i < count; i++) {
+
+			var newCounter = parseInt(Math.floor(i / 2));
+			var newValue = 20;
+
+			}
+
+
+
+
+
+
+		var randomPosition = (Math.random() * 100) + "% " + (Math.random() * 100) + "%";
+
+
+			console.log(randomPosition);
+
+		var node = div.datum(data1).selectAll(".node")
+			.data(treemap.nodes)
+			.enter().append("div")
+			.attr("class", function(d) { return "node " +  d.class_name; })
+			.call(position)
+			.style("background-position",randomPosition+"");
+			//.style("background", function(d) { return d.color ? d.color : "#ffffff"; })
+// 			.text(function(d) { return d.children ? "blue" : d.keytable + "(" + d.value + "-" + Math.max(0, d.dx) + "-" + Math.max(0, d.dy) + ")"; })
+			;
+
+
+
+			 var node = div.datum(data1).selectAll(".node")
+			    .data(treemap.nodes);
+
+			node.transition().duration(300).call(position);
+		}
+
+
+
+	function AddToTreeMap() {
+				console.log("graphicUpdate");
+
+		var inventoryArray =[];
+
+		var priceVariable =[];
+
+
+		 price_list = player.price_list;
+
+   			for (var key in price_list) {
+			    if ( price_list.hasOwnProperty(key)) {
+			        priceVariable.push(price_list[key]);
+			        priceVariable.push(price_list[key]);
+					}
+				}
+
+
+			for (var key in  player.inventory) {
+			    if ( player.inventory.hasOwnProperty(key)) {
+			        inventoryArray.push(player.inventory[key]);
+			        // inventoryArray.push(0);
+					}
+				}
+
+			var count = 0;
+			for (var key in player.inventory) {
+			    if (player.inventory.hasOwnProperty(key)) {
+
+			      //console.log("testOut:" + player.inventory[key]);
+			       count += player.inventory[key];
+			    }
+			}
+
+
+				console.log("INVENTORY: " + count);
+
+
+/*
+		data1 = {
+				"name": "items",
+				"children": [
+
+				]
+			};
+*/
+
+
+
 			var classCounter = "_01";
 
 			if (Math.random() > 0.5) {
@@ -538,6 +637,8 @@ function game_end(){
 
 			node.transition().duration(300).call(position);
 		}
+
+
 
 
 	setTimeout(function(){
