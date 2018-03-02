@@ -19,6 +19,8 @@ rodchenko
 
 var data1 = {};
 
+var globalPaintingCounter = 0;
+
 var last_painting_bought = "";
 
 $(document).ready(function(){
@@ -310,13 +312,16 @@ function game_end(){
     }
 }
 
+
+		globalPaintingCounter++;
+
 		for (i = 0; i < 1; i++) {
 
 			var newCounter = parseInt(Math.floor(i / 2));
 			var newValue = 20;
 			var newObj =
 			{
-						"id": i*55,
+						"id": globalPaintingCounter,
 						"value": 0,
 						"color": "#222",
 						"keytable": "CCR",
@@ -453,19 +458,14 @@ function game_end(){
 				console.log("INVENTORY: " + count);
 
 
+/*
 		data1 = {
 				"name": "items",
 				"children": [
 
 				]
 			};
-
-
-
-		for (i = 0; i < count; i++) {
-
-			var newCounter = parseInt(Math.floor(i / 2));
-			var newValue = 20;
+*/
 
 
 			var classCounter = "_01";
@@ -474,10 +474,12 @@ function game_end(){
 				classCounter = "_02";
 			}
 
+			globalPaintingCounter++;
+
 			var newObj =
 			{
-						"id": i*55,
-						"value": Math.random() * 20,
+						"id": globalPaintingCounter,
+						"value": 50,
 						"color": "#222",
 						"keytable": "CCR",
 // 						"class_name":"painting-"+(i+1),
@@ -488,9 +490,20 @@ function game_end(){
 
 
 
-			data1["children"][i] = newObj;
+			data1["children"].push(newObj);
+
+			console.log(data1);
+
+		for (i = 0; i < count; i++) {
+
+			var newCounter = parseInt(Math.floor(i / 2));
+			var newValue = 20;
 
 			}
+
+
+
+
 
 
 		var randomPosition = (Math.random() * 100) + "% " + (Math.random() * 100) + "%";
